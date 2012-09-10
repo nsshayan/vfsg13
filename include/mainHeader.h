@@ -1,5 +1,5 @@
 struct mainHeader{
-	char fileLabel[20]; //label to the file system
+	char *fileLabel; //label to the file system
 	int maxFileDescriptor; // maximum number of available file descriptors
 	int noUsedDescriptor; // number of used file descriptors
 	struct fileDescriptor *fDescriptor;  //fDescriptor is a pointer to structure of type fileDescriptor
