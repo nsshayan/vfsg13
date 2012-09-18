@@ -1,5 +1,9 @@
+#include<stdio.h>
+#include<string.h>
+//#include<stdlib.h>
+
 struct mainHeader{
-	char *fileLabel; //label to the file system
+	char fileLabel[30]; //label to the file system
 	int maxFileDescriptor; // maximum number of available file descriptors
 	int noUsedDescriptor; // number of used file descriptors
 	struct fileDescriptor *fDescriptor;  //fDescriptor is a pointer to structure of type fileDescriptor
@@ -11,7 +15,7 @@ struct fileDescriptor{
 	char fullPathName[100]; //full path of the file
 	char fileType; // stores the type of the file
 	int fileSize; //stores the size of the file
-	int blockLoc; //Location of the block
+	//int blockLoc; //Location of the block
 };
 
 struct freeList{
@@ -21,4 +25,16 @@ struct freeList{
 
 struct block{
 	int bufferSize; //stores the size of the buffer
+};
+
+struct nAryTree {
+	struct fileDescriptor *fd_tree;
+	//char fileName[50]; //name of the file
+	//char fullPathName[100]; //full path of the file
+	//char fileType; // stores the type of the file
+	//int fileSize; //stores the size of the file
+	//int blockLoc; //Location of the block
+//	struct fileDescriptor *fd;
+	struct nAryTree *leftChild;
+	struct nAryTree *rightSibling;
 };

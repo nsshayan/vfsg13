@@ -1,24 +1,40 @@
-#include<stdio.h>
-#include "include/mainHeader.h"
+#include "../include/mainHeader.h"
 int main() {
 
 FILE *fp;
 
-fp=fopen("prog4.dat","rb");
+struct fileDescriptor fd;
 
-printf("%lu",fp);
+fp=fopen("prog6.dat","rb");
+if(fp==NULL)
+printf("fp null pointer");
+//printf("%lu",fp);
 
 	//fread(nodf, 4, 1, fp);
 
 	//printf("%d",*nodf);
 
-struct mainHeader *mh;
+struct mainHeader mh;
 
-fread(mh,sizeof(struct mainHeader),1,fp);
 
-printf("%lu",mh);
 
-//printf("filelabel=%d",mh->maxFileDescriptor);
+//printing the meta header part
+fread(&mh,sizeof(struct mainHeader),1,fp);
+printf("filelabel=%s",mh.fileLabel);
+printf("\n");
+
+//printing the first file descriptor part
+fseek(fp,0,SEEK_CUR);
+fread(&fd,sizeof(struct fileDescriptor),1,fp);
+printf("\nfileName=%s",fd.fileName);
+printf("\nfullPathName=%s",fd.fullPathName);
+printf("\nfileType=%c",fd.fileType);
+printf("\nfileSize=%d\n",fd.fileSize);
+
+//printf("%lu",mh);
+//if(mh==NULL)
+//printf("null pointer");
+//else
 	/*int i; char a[30];
 
 	for(i=0;i<20;i++) {
