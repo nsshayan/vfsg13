@@ -9,6 +9,8 @@ struct nAryTree node;
 
 extern struct nAryTree *createRoot(struct fileDescriptor *);
 
+extern struct nAryTree *nTreeChild(struct fileDescriptor *,struct nAryTree * );
+
 void create_vfs(char *,int );
 
 void mount_vfs(char *);
@@ -99,8 +101,8 @@ void create_vfs(char *a, int blocksize) {
 		fwrite((fd+k),sizeof(struct fileDescriptor),1,fp);
 	}*/
 	
-	/*strcpy(fd[0].fileName,"root");
-	strcpy(fd[0].fullPathName,"root");
+	strcpy(fd[0].fileName,"ROOT");
+	strcpy(fd[0].fullPathName,"ROOT");
 	fd[0].fileType='D';
 	fd[0].fileSize=0;
 
@@ -108,17 +110,25 @@ void create_vfs(char *a, int blocksize) {
 	
 	fseek(fp,0,SEEK_CUR);
 	
-	strcpy(fd[1].fileName,"a");
-	strcpy(fd[1].fullPathName,"root/a");
+	strcpy(fd[1].fileName,"A");
+	strcpy(fd[1].fullPathName,"ROOT/A");
 	fd[1].fileType='D';
 	fd[1].fileSize=0;
 
 	fwrite((fd+1),sizeof(struct fileDescriptor),1,fp);	
 
+	rewind(fp);
+	fread(&metaHeader,sizeof(struct mainHeader),1,fp);
+
+	metaHeader.noUsedDescriptor=0;
+	rewind(fp);
+	fwrite(&metaHeader,sizeof(struct mainHeader),1,fp);
+	
+	
 	fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[2].fileName,"b");
-	strcpy(fd[2].fullPathName,"root/b");
+	strcpy(fd[2].fullPathName,"ROOT/B");
 	fd[2].fileType='F';
 	fd[2].fileSize=0;
 
@@ -127,13 +137,13 @@ void create_vfs(char *a, int blocksize) {
 	fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[3].fileName,"c");
-	strcpy(fd[3].fullPathName,"root/a/c");
+	strcpy(fd[3].fullPathName,"ROOT/A/C");
 	fd[3].fileType='D';
 	fd[3].fileSize=0;
 
 	fwrite((fd+3),sizeof(struct fileDescriptor),1,fp);			
 
-	fseek(fp,0,SEEK_CUR);
+	/*fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[3].fileName,"d");
 	strcpy(fd[3].fullPathName,"root/a/d");
@@ -166,46 +176,51 @@ void mount_vfs(char *a)
 {
 
 	FILE *fp;
-
 	fp=fopen("prog6.dat","rb+");
-
+	
+	printf("\nhi\n");
 	struct mainHeader mh;
-	struct fileDescriptor *fd;
+	struct fileDescriptor fd;
 	
 	//printing the meta header part
 	fread(&mh,sizeof(struct mainHeader),1,fp);
-	printf("filelabel=%s",mh.fileLabel);
+	printf("%d",mh.noUsedDescriptor);
+	//printf("filelabel=%s",mh.fileLabel);
 	printf("\n");
 	
 	
 	
-	
-	struct nAryTree *node;
+	struct nAryTree *root;
 
-	if(mh.noUsedDescriptors==0)
+	if(mh.noUsedDescriptor==0)
 	{	 
-	node=createRoot(fd);
-	mh.noUsedDescriptors=1;
-	
-	fd=(struct fileDescriptor *) malloc(sizeof(struct fileDescriptor));	
-	fd=node->fd_tree;
-		printf("\n Written into the descriptor");
-		printf("\n%s",fd->fileName);
-		printf("\n%s",fd->fullPathName);
-		printf("\n%c",fd->fileType);
-		printf("\n%d",fd->fileSize);
-		printf("\nWritten in to the file");
 	fseek(fp,0,SEEK_CUR);
-	fwrite(fd,sizeof(struct fileDescriptor),1,fp);
-		printf("\n%s\n",node->fd_tree->fileName);
-		printf("\n After writing into the file");
+	fread(&fd,sizeof(struct fileDescriptor),1,fp);
+	printf("%s",fd.fileName);	
+	root=createRoot(&fd);
+	printf("\nhi\n");
+	rewind(fp);
+	fread(&mh,sizeof(struct mainHeader),1,fp);
+	mh.noUsedDescriptor++;
+	printf("\nhi\n");
+	rewind(fp);
+	fwrite(&mh,sizeof(struct mainHeader),1,fp);
+		printf("\nhi\n");
+	printf("\n After writing into the file");
 	}
 
 		
-	 if(mh.noUsedDescriptors > 0)
+	 if(mh.noUsedDescriptor > 0)
 		{
-				
-			
+		printf("\nhi in 2nd if\n");
+
+			fseek(fp,0,SEEK_CUR);
+			fread(&fd,sizeof(struct fileDescriptor),1,fp);
+printf("\nhi in 2nd if\n");			
+			printf("%s",fd.fileName);		
+		printf("\nhi in 2nd if\n");	
+			root=nTreeChild(&fd,root);
+printf("\nhisldflsaj\n");
 		}
 	
 		fclose(fp);
