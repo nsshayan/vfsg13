@@ -10,6 +10,7 @@ struct nAryTree node;
 extern struct nAryTree *createRoot(struct fileDescriptor *);
 
 extern struct nAryTree *nTreeChild(struct fileDescriptor *,struct nAryTree * );
+extern void print(struct nAryTree *);
 
 void create_vfs(char *,int );
 
@@ -25,7 +26,7 @@ int main(int argc,char *argv[])
 	int choice, flag=1;
 	
 	while (flag) {
-		printf("enter your choice\n");
+		printf("\nenter your choice\n");
 		scanf("%d",&choice);
 		switch(choice) {
 			case 1:
@@ -106,43 +107,53 @@ void create_vfs(char *a, int blocksize) {
 	fd[0].fileType='D';
 	fd[0].fileSize=0;
 
+	fseek(fp,sizeof(struct mainHeader),SEEK_SET);
 	fwrite((fd+0),sizeof(struct fileDescriptor),1,fp);	
 	
-	fseek(fp,0,SEEK_CUR);
+	//fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[1].fileName,"A");
 	strcpy(fd[1].fullPathName,"ROOT/A");
 	fd[1].fileType='D';
 	fd[1].fileSize=0;
 
+	fseek(fp,(sizeof(struct mainHeader)+sizeof(struct fileDescriptor)),SEEK_SET);	
 	fwrite((fd+1),sizeof(struct fileDescriptor),1,fp);	
 
-	rewind(fp);
+	/*rewind(fp);
 	fread(&metaHeader,sizeof(struct mainHeader),1,fp);
 
 	metaHeader.noUsedDescriptor=0;
 	rewind(fp);
-	fwrite(&metaHeader,sizeof(struct mainHeader),1,fp);
+	fwrite(&metaHeader,sizeof(struct mainHeader),1,fp);*/
 	
 	
-	fseek(fp,0,SEEK_CUR);
+//	fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[2].fileName,"b");
 	strcpy(fd[2].fullPathName,"ROOT/B");
 	fd[2].fileType='F';
 	fd[2].fileSize=0;
 
+	fseek(fp,(sizeof(struct mainHeader)+2*sizeof(struct fileDescriptor)),SEEK_SET);		
 	fwrite((fd+2),sizeof(struct fileDescriptor),1,fp);
 
-	fseek(fp,0,SEEK_CUR);
+//	fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[3].fileName,"c");
 	strcpy(fd[3].fullPathName,"ROOT/A/C");
 	fd[3].fileType='D';
 	fd[3].fileSize=0;
 
+	fseek(fp,(sizeof(struct mainHeader)+3*sizeof(struct fileDescriptor)),SEEK_SET);	
 	fwrite((fd+3),sizeof(struct fileDescriptor),1,fp);			
 
+	rewind(fp);
+	fread(&metaHeader,sizeof(struct mainHeader),1,fp);
+	metaHeader.noUsedDescriptor=4;	
+	rewind(fp);
+	fwrite(&metaHeader,sizeof(struct mainHeader),1,fp);
+	rewind(fp);
 	/*fseek(fp,0,SEEK_CUR);
 	
 	strcpy(fd[3].fileName,"d");
@@ -178,49 +189,48 @@ void mount_vfs(char *a)
 	FILE *fp;
 	fp=fopen("prog6.dat","rb+");
 	
-	printf("\nhi\n");
 	struct mainHeader mh;
-	struct fileDescriptor fd;
+	struct fileDescriptor *fd;
 	
 	//printing the meta header part
 	fread(&mh,sizeof(struct mainHeader),1,fp);
-	printf("%d",mh.noUsedDescriptor);
+	printf("\n%s",mh.fileLabel);
+	printf("\n%d",mh.maxFileDescriptor);
+	printf("\n%d",mh.noUsedDescriptor);
+
 	//printf("filelabel=%s",mh.fileLabel);
 	printf("\n");
 	
-	
+	fd=mh.fDescriptor;
 	
 	struct nAryTree *root;
 
 	if(mh.noUsedDescriptor==0)
 	{	 
-	fseek(fp,0,SEEK_CUR);
-	fread(&fd,sizeof(struct fileDescriptor),1,fp);
-	printf("%s",fd.fileName);	
-	root=createRoot(&fd);
-	printf("\nhi\n");
-	rewind(fp);
-	fread(&mh,sizeof(struct mainHeader),1,fp);
-	mh.noUsedDescriptor++;
-	printf("\nhi\n");
-	rewind(fp);
-	fwrite(&mh,sizeof(struct mainHeader),1,fp);
-		printf("\nhi\n");
-	printf("\n After writing into the file");
+	fseek(fp,sizeof(struct mainHeader),SEEK_SET);			
+	fread(fd,sizeof(struct fileDescriptor),1,fp);
+	printf("\n%s",fd->fileName);
+	printf("\n%s",fd->fullPathName);
+	printf("\n%c",fd->fileType);
+	printf("\n%d\n",fd->fileSize);	
+	root=createRoot(fd);
+	printf("\n%s\n",root->fd_tree->fileName);
+	//rewind(fp);
+	//fread(&mh,sizeof(struct mainHeader),1,fp);
+	//mh.noUsedDescriptor++;
+	//rewind(fp);
+	//fwrite(&mh,sizeof(struct mainHeader),1,fp);
 	}
 
 		
 	 if(mh.noUsedDescriptor > 0)
 		{
-		printf("\nhi in 2nd if\n");
-
 			fseek(fp,0,SEEK_CUR);
-			fread(&fd,sizeof(struct fileDescriptor),1,fp);
-printf("\nhi in 2nd if\n");			
-			printf("%s",fd.fileName);		
-		printf("\nhi in 2nd if\n");	
-			root=nTreeChild(&fd,root);
-printf("\nhisldflsaj\n");
+			fread(fd,sizeof(struct fileDescriptor),1,fp);
+			printf("%s",fd->fileName);		
+			printf("\n%s",root->fd_tree->fileName);
+			root=nTreeChild(fd,root);
+			print(root);
 		}
 	
 		fclose(fp);

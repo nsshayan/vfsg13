@@ -23,8 +23,9 @@ fread(&mh,sizeof(struct mainHeader),1,fp);
 printf("filelabel=%s",mh.fileLabel);
 printf("\n");
 
+//fd=mh.fDescriptor;
 //printing the first file descriptor part
-fseek(fp,0,SEEK_CUR);
+fseek(fp,sizeof(struct mainHeader),SEEK_SET);
 fread(&fd,sizeof(struct fileDescriptor),1,fp);
 printf("\nfileName=%s",fd.fileName);
 printf("\nfullPathName=%s",fd.fullPathName);
