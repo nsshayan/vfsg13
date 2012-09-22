@@ -1,7 +1,7 @@
 #include "../include/mainHeader.h"
-#include<stdlib.h>
+//#include<stdlib.h>
 
-struct nAryTree nNode;
+//struct nAryTree nNode;
 
 
 //struct fileDescriptor fd;
@@ -20,7 +20,7 @@ struct nAryTree *createRoot(struct fileDescriptor *fd) {
 	nRootPtr->leftChild=NULL;
 	nRootPtr->rightSibling=NULL;		
 	root=nRootPtr;	
-free(nRootPtr);
+//free(nRootPtr);
 return root;
 
 }
@@ -49,9 +49,10 @@ struct nAryTree *nTreeChild(struct fileDescriptor *fd,struct nAryTree *root) {
 			token[i]=strtok(NULL,delimiter);
 	
 currPtr=root;i=0;
-rightNode=calloc(1,sizeof(struct nAryTree));
-leftNode=calloc(1,sizeof(struct nAryTree));
-printf("after malloc");
+printf("%s",root->fd_tree->fileName);
+rightNode=(struct nAryTree *)calloc(1,sizeof(struct nAryTree));
+leftNode=(struct nAryTree *)calloc(1,sizeof(struct nAryTree));
+//printf("after malloc");
 //Logic for traversing through left  child
 		while(i<count)			 
 		{
@@ -87,7 +88,29 @@ printf("after malloc");
 				leftNode->rightSibling=NULL;
 				currPtr->leftChild=leftNode;
 			}
+i++;
 		}
 
+
+
 return root;
+}
+
+
+void print(struct nAryTree *root)
+{
+struct nAryTree *currPtr;
+
+currPtr=root;
+
+	printf("\nThe left child created are::");
+	while(currPtr!=NULL)
+	{
+		printf("\n%s",currPtr->fd_tree->fileName);
+		printf("\n%s",currPtr->fd_tree->fullPathName);
+		printf("\n%c",currPtr->fd_tree->fileType);
+		printf("\n%d",currPtr->fd_tree->fileSize);
+		currPtr=currPtr->leftChild;
+	}
+printf("\n");
 }
