@@ -24,7 +24,7 @@ void main()
 	makempty();
 	while(1)
 	{ 
-		printf("\n1. Insert\n2. Delete\n3. Find\n4.Display\n5. Exit\n Enter Your Choice : ");
+		printf("\n1. Insert\n2. Delete\n3. Find\n4. Display\n5. Exit\n Enter Your Choice : ");
 		scanf("%d",&ch);
 		switch(ch) {
 				case 1: 
