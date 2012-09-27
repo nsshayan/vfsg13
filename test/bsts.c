@@ -1,172 +1,148 @@
 #include<stdio.h>
-#include<string.h>
 #include<stdlib.h>
-struct node
+#include<string.h>
+struct tree
 {
-char data[15];
-struct node *left,*right;
-};
-void insert(struct node *r,struct node *p)
-{
-if((r->right==NULL)&&(strcmp(p->data,r->data)>0))
-r->right=p;
-else if((r->right!=NULL)&&(strcmp(p->data,r->data)>0))
-insert(r->right,p);
-if((r->left==NULL)&&(strcmp(p->data,r->data)< 0))
-r->left=p;
-else if((r->left!=NULL)&&(strcmp(p->data,r->data)< 0))
-insert(r->left,p);
-}
-void tree(struct node *r,int c)
-{
-int top,flag;
-struct node *w,*stack[20];
-if(r!=NULL)
-{
-if(c!=4)
-{
-if(c == 1)
-printf(" %s ",r->data);
-tree(r->left,c);
-if(c == 2)
-printf(" %s ",r->data);
-tree(r->right,c);
-if(c == 3)
-printf(" %s ",r->data);
-}
-}
-}
+char str[50];
+struct tree *right;
+struct tree *left;
+}*root;
+typedef struct tree *node;
+
+char string[50];
+node insert(char[],node);
+node delete(char[],node);
+void makempty();
+node findmin(node);
+node find(char[], node);
+void display(node);
+
 void main()
 {
-int choice,c,i,flag;
-char temp='n',temp1[15];
-struct node *s,*root,*r,*q;
-root = NULL;
-do
-{
-//clrscr();
-printf("\n 1. Enter");
-printf("\n 2. Delete ");
-printf("\n 3. Search ");
-printf("\n 4. Display");
-printf("\n 5. Exit");
-printf("\nEnter Your Choice : ");
-scanf("%d",&choice);
-switch(choice)
-{
-case 1:printf("***** Data Entry ***** ");
-do
-{
-s=malloc(sizeof(struct node));
-s->left=NULL;
-s->right=NULL;
-printf("\nEnter Data : ");
-scanf("%s",&s->data);
-if(root==NULL)
-root=s;
-else
-insert(root,s);
-printf("\nEnter Your Elements[y/n] : ");
-scanf("%c",&temp);
+	int ch;
+	node temp;
+	makempty();
+	while(1)
+	{ 
+		printf("\n1. Insert\n2. Delete\n3. Find\n4.Display\n5. Exit\n Enter Your Choice : ");
+		scanf("%d",&ch);
+		switch(ch) {
+				case 1: 
+			
+					printf("Enter an String : ");
+					scanf("%s", string);
+					root = insert(string,root); 
+                                        strcpy(string," ");
+				break;
+				case 2: 
+				
+					printf("\nEnter the string to delete : ");
+					scanf("%s",string);
+					root = delete(string, root); 
+					 strcpy(string," ");
+				break;
+				case 3: 
+					printf("\nEnter the string to search : ");
+					scanf("%s",string);
+					temp = find(string, root);
+					if (temp != NULL) 
+						printf("Element found");
+					else 
+						printf("Element not found");
+					 strcpy(string," "); 
+				break;
+				case 4:
+					if(root==NULL) 
+						printf("\nEmpty tree");
+					else
+						display(root); 
+				break;
+				case 5:
+					exit(0);
+				default: 
+					printf("Invalid Choice");
+				}
+	}
 }
-while(temp=='y');
-break;
-case 2:printf("****** Delete Operation *******\n");
-do
+
+node insert(char x[],node info)
 {
-printf("\nEnter Element To Be Deleted : ");
-scanf("%s",temp1);
-s=root;i=0;flag=0;
-do
+	if(info==NULL)
+	{
+		info = (node)malloc(sizeof(node));
+		strcpy(info->str,x);
+		info->left = info->right = NULL;
+	}
+	else
+	{
+	if(strcmp(x,info->str)<0)
+		info->left = insert(x, info->left);
+	else if(strcmp(x ,info->str)>0)
+		info->right = insert(x, info->right);
+	}
+	return info;
+}
+
+node delete(char x[],node info)
 {
-if(strcmp(s->data,temp1)>0)
+	node temp;
+	if(info == NULL) 
+		printf("\nElement not found");
+	else
+	{
+	if(strcmp(x,info->str)<0)
+		info->left = delete(x, info->left);
+	else if(strcmp(x,info->str)>0)
+		info->right = delete(x, info->right);
+	else
+	{
+		if(info->left && info->right)
+		{
+			temp = findmin(info->right);
+			strcpy(info->str,temp->str);
+			info->right = delete(info->str,info->right);
+		}
+		else if(info->left == NULL)
+			info=info->right;
+		else
+			info=info->left;
+	}
+	}
+	return info;
+}
+
+node findmin(node temp)
 {
-r=s;
-s=s->left;
-i=2;
+	if(temp == NULL || temp->left == NULL)
+		return temp;
+        else
+	      return findmin(temp->left);
 }
-if(strcmp(s->data,temp1)==0)
+
+void makempty()
 {
-flag=1;
-if(i==0)
+ root=NULL;
+}
+
+node find(char x[], node info)
 {
-if(root->right!=NULL)
+	if(info==NULL) 
+		return NULL;
+	if(strcmp(x,info->str)<0) 
+		return find(x,info->left);
+	if(strcmp(x,info->str)>0) 
+		return find(x,info->right);
+	return info;
+}
+void display(node info)
 {
-q=root->left;
-root=root->right;
-insert(root,q);
-}
-if(root->right==NULL)
-root=root->left;
-}
-else
-{
-if(i==1)
-{
-q=s->left;
-r->right=s->right;
-if(s->left!=NULL)
-insert(r,q);
-}
-if(i==2)
-{
-q=s->right;
-r->left=s->left;
-if(s->right!=NULL)
-insert(r,q);
-}
-}
-}
-}
-while(flag==0&&s!=NULL);
-printf("\n Delete Any More[Y/N] : ");
-scanf("%c",&temp);
-}
-while(temp=='y');
-break;
-case 3:printf("****** Search Operation *******\n");
-do
-{
-printf("\n Enter Name To Be Searched :");
-scanf("%s",temp1);
-i=0;
-s=root;
-while(s!=NULL&&i==0)
-{
-if(strcmp(s->data,temp1)< 0)
-s=s->right;
-if(strcmp(s->data,temp1)>0)
-s=s->left;
-if(strcmp(s->data,temp1)==0)
-i=1;
-}
-if(i==0)
-printf("\nElement Not Found\n");
-else
-printf("\nElement Found\n");
-printf("\nEnter More Elements[Y/N] : ");
-scanf("%c",&temp);
-}
-while(temp=='y');
-break;
-case 4:printf("Way in which you want to Search");
-do
-{
-//clrscr();
-printf("\n 1. Preorder\n 2. Inorder \n 3. Postorder \n 4. Exit");
-printf("\nEnter Your Choice : ");
-scanf("%d",&c);
-if(root==NULL)
-printf("Tree Not Started Yet");
-else
-tree(root,c);
-printf("\n Press Any Key To Continue......");
-//getch();
-}
-while(c!=4);
-break;
-}
-}
-while(choice!=5);
+	
+	
+	if(info!=NULL)
+	{
+           display(info->left);
+	   printf("  %s  ",info->str);
+           display(info->right);
+        } 
 }
 
