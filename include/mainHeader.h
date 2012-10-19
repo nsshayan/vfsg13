@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct mainHeader{
 	char fileLabel[30]; //label to the file system
