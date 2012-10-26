@@ -1,7 +1,7 @@
 //#include<stdio.h>
 #include "../include/mainHeader.h"
 //#include"../test/narrtest.c"
-#define blockNo 1024
+#define blockNo 2048
 //#include<string.h>
 #include<stdlib.h>
 struct mainHeader metaHeader;
@@ -23,11 +23,11 @@ int main(int argc,char *argv[])
 	char a[30];
 	strcpy(a,argv[1]);
 	int blocksize=1024;
-
+	printf("\nI am in main function\n");
 	printf("enter 1 for creating and 2 for mounting and 3 to quit\n");
 	int choice, flag=1;
 
-	while (flag) {
+	while(flag) {
 		printf("\nenter your choice\n");
 		scanf("%d",&choice);
 		switch(choice) {
