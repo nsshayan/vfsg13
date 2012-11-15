@@ -1,0 +1,57 @@
+//logic part for traversing the nary tree and the respsctive nodes
+while(i<count)			 
+		{
+							
+			printf("\n token[1]=%s \t file Name=%s",token[1],currPtr->fd_tree->fileName);
+			
+			if(strcasecmp(token[1],currPtr->fd_tree->fileName)==0)
+			{
+				printf("\nIn if part of N-AryTree Child creation\n");
+				while(currPtr->rightSibling!=NULL)
+					currPtr=currPtr->rightSibling;
+
+				/*strcpy(rightNode->fd_tree->fileName,fd->fileName);
+				printf("\nIn n are child\n");
+				strcpy(rightNode->fd_tree->fullPathName,fd->fullPathName);
+				rightNode->fd_tree->fileType=fd->fileType;
+				rightNode->fd_tree->fileSize=fd->fileSize;*/
+				rightNode->fd_tree=fd;
+				rightNode->leftChild=NULL;
+				rightNode->rightSibling=NULL;
+				currPtr->rightSibling=rightNode;
+				
+				//printf("rightNode not created");	
+			}
+			else
+			{
+								printf("\nIn else part of N-AryTree Child creation\n");
+				while(currPtr->leftChild!=NULL)
+					currPtr=currPtr->leftChild;
+				
+				printf("\n\n");
+				printf("\nIn else part of N-AryTree Child creation\n");
+				printf("\nfile name=%s\n",fd->fileName);
+				printf("\nfile name=%s\n",fd->fullPathName);
+				printf("\nfile type=%c\n",fd->fileType);
+				printf("\n%d\n",sizeof(leftNode->fd_tree->fileName));	
+				//leftNode->fd_tree->fileName=fd->fileName;
+				/*strcpy(leftNode->fd_tree->fileName,fd->fileName);
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);
+				strcpy(leftNode->fd_tree->fullPathName,fd->fullPathName);
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);
+				leftNode->fd_tree->fileType=fd->fileType;
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);
+				leftNode->fd_tree->fileSize=fd->fileSize;
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);*/
+				leftNode->fd_tree=fd;
+				leftNode->leftChild=NULL;
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);
+				leftNode->rightSibling=NULL;
+				printf("\nfile name=%s\n",leftNode->fd_tree->fileName);
+				printf("\nfile name=%s\n",leftNode->fd_tree->fullPathName);
+				printf("\nfile type=%c\n",leftNode->fd_tree->fileType);
+				//printf("\n%u\n",leftNode);			
+				currPtr->leftChild=leftNode;
+			}
+		i++;
+		}
