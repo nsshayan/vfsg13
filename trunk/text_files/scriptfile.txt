@@ -1,0 +1,6 @@
+createvfs iiitb 1024
+mountvfs iiitb
+makedir / vehicle
+makedir /vehicle 4wheeler
+makedir /transport road
+
