@@ -37,6 +37,7 @@ struct nAryTree {
 
 //strcuture for bstnode
 typedef struct node{
+	char path[120];
 	struct fileDescriptor *file;
 	struct node *leftchild;
 	struct node *rightchild;
@@ -45,13 +46,15 @@ typedef struct node{
 
 //structure for hash table
 typedef struct hashnode{
+	char paths[100];
 	struct fileDescriptor  *file;
 	struct hashnode *next;
 }list;
-typedef struct llistnode
-{	char paths[100];
-	struct node *next;
-}llist;
+
+/*typedef struct llistnode
+{	
+	struct hashnode *next;
+}llist;*/
 
 
 struct mainHeader metaHeader;
