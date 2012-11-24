@@ -1,0 +1,7 @@
+DATA_FILE_ALREADY_EXISTS
+mountvfs_success
+DIRECTORY_ALREADY_EXISTS
+unmountvfs_success
+mountvfs_success
+DIRECTORY_ALREADY_EXISTS
+unmountvfs_success
