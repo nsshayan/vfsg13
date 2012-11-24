@@ -31,9 +31,3 @@ extern void copy_file(char *,char *);
 extern void makeDirRec(char *,char *);
 
 extern struct nAryTree * currPtrReturn(char [],char []);
-
-extern int error_createvfs(char *,int);
-
-extern int error_mountvfs(char *);
-
-extern int error_unmountvfs(char *);

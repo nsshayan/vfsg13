@@ -18,9 +18,9 @@ extern void listNonRec(struct nAryTree *);
 
 extern void listRec(struct nAryTree *);
 
-extern void deletebst(node *,char []);
+extern void deletebst(char [],node *,char []);
 
-extern int searchbst(char *,node *);
+extern int searchbst(char [],char [],node *,char []);
 
 extern node* bstinsert(node* ,struct fileDescriptor *);
 
@@ -28,14 +28,18 @@ extern node* add(struct fileDescriptor *);
 
 extern void display(node *);
 
-extern void search(char *);
+extern list * searchHash(char *);
 
 extern void hashing(struct fileDescriptor *);
 
 extern list* hashadd(char *,char *, list *);
 
+extern void delhash(node *,char []);
+
 extern void addToFile(char []);
 
 extern int searchBstPath(char [],node *);
 
-extern llist *listinsert(llist *, char []);
+extern list *listinsert(list *, char []);
+
+extern void search_file(char *,char *);
