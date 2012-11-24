@@ -1,129 +1,146 @@
-#include "../include/bst.h"
+#include "mainHeader.h"
+#include "funcPrototype.h"
 
-struct tree {
-	int block_no;
-	struct tree *left;
-	struct tree *right;
-};
+/* typedef struct filedescripter{	
+	char filename[20];
+	char filepath[50];
+	char filetype; // stores the type of the file
+	int filesize;
+}fd;  */
 
-struct tree * create() {
-	struct tree *p, *root;
-	int x,flag,y,z;
+
+/* typedef struct node{
+	fd  *file;
+	struct node *leftchild;
+	struct node *rightchild;
+}node; */
+
+
+char filename[20],filepath[50],filetype,filename2[20];
+int filesize;
+
+
+/* void main(){
+	int a,b;
 	
-	root=(struct tree *) malloc(sizeof(struct tree));
-	printf("Enter the block_no to be put in root node\t");	
-	scanf("%d",&z);
-	root->block_no=z;
-	root->left=NULL;
-	root->right=NULL;
+	while(1){
+	printf("Enter your choice \n 1: Add file \n 2: Search file \n");
+	scanf("%d",&a);
 	
-	printf("\n");
-	printf("Enter -1 if you want to terminate else press any key\t");
-	scanf("%d",&y);
-	
-	while(y!=-1) {
-		flag=1; 
-		p=root;
-		printf("\n");
-		printf("Enter the block_no to be put in next node\t");		
-		scanf("%d",&x);
-		
-		while(flag) {
-			if(x<p->block_no) {	
-				if(p->left==NULL) {				
-					p->left=(struct tree *)malloc(sizeof(struct tree));
-					p=p->left;
-					p->block_no=x;
-					p->left=NULL;
-					p->right=NULL;
-					flag=0;
+	switch(a){
+		case 1:
+			do{
+				printf("Enter the filename or Exit to abort\n");
+				scanf("%s", filename);
+				if(strcmp(filename,"Exit"))
+				{				
+				printf("Enter the filepath\n");
+				scanf("%s",filepath);
+				printf("Enter the filesize\n");
+				scanf("%d",&filesize);
+				//printf("Enter the filetype\n");
+				//scanf("%c",&filetype);
+				filetype='d';
+				bstroot = insert(bstroot);
 				}
 				else
-					p=p->left;
-			}
-			else {
-				if(p->right==NULL) {				
-					p->right=(struct tree *)malloc(sizeof(struct tree));
-					p=p->right;
-					p->block_no=x;
-					p->left=NULL;
-					p->right=NULL;
-					flag=0;
-				}
-				else
-					p=p->right;
-			}
-		}
-		printf("\nEnter -1 if you want to terminate else press any key\t");
-		scanf("%d",&y);
-	}
-	return root;
-}
-
-struct tree * insert(struct tree *root, int nblock_no) {
-	struct tree *p,*q;
-	q=NULL;
-	p=root;
-	while(p!=NULL) {
-		q=p;		
-		if(nblock_no>p->block_no) {
-			//p->right=(struct tree *)malloc(sizeof(struct tree));
-			p=p->right;
-		}
-		else {
-			//p->left=(struct tree *)malloc(sizeof(struct tree));		
-			p=p->left;
+					break;	
+			}while(1);	
+			break;
+		case 2:
+			printf("Enter the filepath u want to search\n");
+			scanf("%s", filepath);
+			b=search(filepath,bstroot);
+			break;
+		default:
+			break;
 		}
 	}
-	q=p;
-	q=(struct tree *)malloc(sizeof(struct tree));		
-	q->block_no=nblock_no;
-	q->left=NULL;
-	q->right=NULL;
+	
+} */
 
-return root;
-}
 
-struct tree * delete(struct tree *root, int a) {
-	return root;
-}
-
-int main() {
-
-	struct tree *root;
-	int m,a,flag=1;
-
-	while(flag) {
-		printf("\n--Enter 1 to create a BST--");		
-		printf("\n--Enter 2 to inser a node in BST--");	
-		printf("\n--Enter 3 to delete a node from BST--");	
-		printf("\n--Enter 4 to exit--");	
-
-		printf("\n\nEnter the choice\t");
-		scanf("%d",&m);
-
-		switch(m) {
-			case 1: root=create();
-				printf("\n%d\n",root->block_no);
-				break;
-
-			case 2: printf("\n\nEnter the block_no to be inserted\t");
-				scanf("%d",&a);
-				root=insert(root, a);
-				printf("\n%d\n",root->block_no);
-				printf("\n%d\n",root->right->block_no);
-				break;
-
-			case 3: printf("\n\nEnter the block_no to be deleted\t");
-				scanf("%d",&a);
-				root=delete(root, a);
-				break;
-
-			case 4: flag=0;
-				break;
-
-			default: printf("\n\nYou have entered a wrong choice");
-		}
-	}
+node* add(struct fileDescriptor *fdtemp){
+	node *temp;
 		
+	temp=(node*)malloc(sizeof(node));     
+	temp->rightchild=NULL;
+	temp->leftchild=NULL;
+
+	temp->file=fdtemp;
+
+	return temp;
+
+
 }
+
+node* insert(node* temp,struct fileDescriptor *fd){
+	if(bstroot==NULL){		
+		bstroot= add(fd);
+		return bstroot;
+	}	
+	if(bstroot->leftchild == NULL && strcmp(bstroot->file->fileName,fd->fileName)<0){
+		bstroot->leftchild = add(fd);
+		return bstroot;
+	}
+	if(bstroot->rightchild==NULL && strcmp(bstroot->file->fileName,fd->fileName)>=0){
+		bstroot->rightchild = add(fd);
+		return bstroot;
+	}
+
+
+	if(temp->leftchild == NULL && strcmp(temp->file->fileName,fd->fileName)<0){
+		temp->leftchild = add(fd);
+		return bstroot;
+	}		
+	else if	(strcmp(temp->file->fileName,fd->fileName)<0){
+		temp=temp->leftchild; 
+		bstroot=insert(temp,fd);
+		return bstroot;
+	}
+
+
+	if(temp->rightchild==NULL && strcmp(temp->file->fileName,fd->fileName)>=0){
+		temp->rightchild = add(fd);
+		return bstroot; 
+	}
+	else if	(strcmp(temp->file->fileName,fd->fileName)>=0){
+		temp=temp->rightchild; 
+		bstroot=insert(temp,fd);
+		return bstroot;
+	}
+
+}
+
+
+ int searchBstPath(char filepath[],node *temp){
+	//node *temp2=temp;	
+	if(temp != NULL){
+	searchBstPath(filepath,temp->leftchild);
+	if(!(strcmp(filepath,temp->file->fullPathName))){
+		printf("\nsearch bst using pathname %s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
+		return 0;
+	}
+	searchBstPath(filepath,temp->rightchild);
+	}
+} 
+
+void display(node *temp){	
+	
+	if(temp != NULL){		
+		//printf("\n%s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
+		printf("\nfile Name=%s",temp->file->fileName);
+		printf("\nleft child of %s",temp->file->fileName);
+		display(temp->leftchild);	
+		printf("\n right child of %s",temp->file->fileName);			
+		display(temp->rightchild);
+	}
+} 
+
+
+
+
+
+
+
+
