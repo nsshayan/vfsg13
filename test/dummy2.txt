@@ -78,3 +78,15 @@ listdir root 1 unmountfile.txt
 addfile root/vehicle/3wheeler abc.txt addDemo.txt
 addfile root/transport dbc.txt sample.txt
 listfile root/transport/dbc.txt sample_out.txt
+
+
+
+---------------
+mountvfs iitkgp19
+makedir /vehicle/2wheeler hero
+unmountvfs iiitkgp19
+
+
+
+
+
