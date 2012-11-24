@@ -1,6 +1,0 @@
-mountvfs_success
-mountvfs_success
-mountvfs_success
-mountvfs_success
-mountvfs_success
-mountvfs_success
