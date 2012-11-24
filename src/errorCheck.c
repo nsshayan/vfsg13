@@ -9,7 +9,7 @@ int error_createvfs(char *P1,int P2)
 FILE *mainfp,*fp;
 int i,flag=0;
 
-fp=fopen("../text_files/SUCCESS.txt","a");
+fp=fopen("../test/SUCCESS.txt","a");
     if(P1==NULL || P2==0)
     {
     flag=1;
@@ -75,7 +75,7 @@ int error_mountvfs(char *P1) {
     FILE *mainfp,*fp;
     //char ch;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
    
     if(strlen(P1)==0)
     {
@@ -123,7 +123,7 @@ int error_unmountvfs(char *P1) {
     FILE *mainfp,*fp;
     //char ch;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
     mainfp=fopen(P1,"rb");
        
     if(P1==NULL)
@@ -163,7 +163,7 @@ int error_makedir(char *P1,char *P2) {
     FILE *fp;
     struct nAryTree *currPtr;
    
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
     //mainfp=fopen(metaHeader.fileLabel,"rb");
 
 	//#define ERR_VFS_MAKEDIR_05 "VFS_NOT_MOUNTED"
@@ -211,7 +211,7 @@ int error_makedir(char *P1,char *P2) {
 		}
 //#define ERR_VFS_MAKEDIR_03 "DIRECTORY_ALREADY_EXISTS"
 	currPtr=currPtrReturn(P1,P2);
-	//exist=searchbst(P2,P1,bstroot,"../text_files/success.txt");
+	//exist=searchbst(P2,P1,bstroot,"../test/success.txt");
 	if(currPtr!=NULL)
 	{
 	flag=3;
@@ -230,7 +230,7 @@ int error_deletedir(char *P1) {
     FILE *fp;
     struct nAryTree *currPtr;
    
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_DELETEDIR_04 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -279,7 +279,7 @@ int error_movedir(char *P1, char *P2)
     FILE *fp;
     struct nAryTree *currPtr,*destPtr;   
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 
 //#define ERR_VFS_MOVEDIR_08 "VFS_NOT_MOUNTED"
     if(root==NULL)
@@ -384,7 +384,7 @@ int error_listdir(char *P1, int P2, char *P3 )
     FILE *mainfp,*fp;
     struct nAryTree *currPtr;   
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 
 //#define ERR_VFS_LISTDIR_03 "VFS_NOT_MOUNTED"
     if(root==NULL)
