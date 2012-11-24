@@ -9,7 +9,7 @@ int error_addfile(char *P1, char *P2, char *P3)
     FILE *mainfp,*fp;
     int i,flag=0,size;
     struct nAryTree *currPtr;
-fp=fopen("../text_files/SUCCESS.txt","a");
+fp=fopen("../test/SUCCESS.txt","a");
 
 //#define ERR_VFS_ADDFILE_07 "VFS_NOT_MOUNTED"
     if(root==NULL)
@@ -93,7 +93,7 @@ int error_listfile(char *P1, char *P2)
     int flag=0;
     struct nAryTree *currPtr;
    
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_LISTFILE_04 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -148,7 +148,7 @@ int error_updatefile(char *P1, char *P2)
     int flag=0;
     struct nAryTree *currPtr;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_UPDATEFILE_04 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -196,7 +196,7 @@ int error_removefile(char *P1)
     int flag=0;
     struct nAryTree *currPtr;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_REMOVEFILE_02 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -243,7 +243,7 @@ int error_movefile(char *P1,char *P2)
     int flag=0;
     struct nAryTree *currPtr;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_MOVEFILE_06 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -289,7 +289,7 @@ int error_copyfile(char *P1,char *P2)
     int flag=0;
     struct nAryTree *currPtr,*destPtr;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_COPYFILE_05 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -352,7 +352,7 @@ int error_exportfile(char *P1,char *P2)
     int flag=0;
     struct nAryTree *currPtr;
 
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 //#define ERR_VFS_EXPORTFILE_04 "VFS_NOT_MOUNTED"
     if(root==NULL)
     {
@@ -406,7 +406,7 @@ int error_searchfile(char *P1,char *P2)
 {
     int flag=0;
     FILE *fp;
-    fp=fopen("../text_files/SUCCESS.txt","a");
+    fp=fopen("../test/SUCCESS.txt","a");
 
 //#define ERR_VFS_SEARCHFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
     if(P1==NULL || P2== NULL)

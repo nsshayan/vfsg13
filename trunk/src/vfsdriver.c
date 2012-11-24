@@ -58,7 +58,7 @@ int main( int argc, char *argv[] )
 		return(2);
 	}
 	
-	fp=fopen("../text_files/SUCCESS.txt","w");
+	fp=fopen("../test/SUCCESS.txt","w");
 	fclose(fp);
 	while( fgets(linebuffer, sizeof(linebuffer), scriptfp) != NULL ){
 		strcpy(ch1,"root");
@@ -173,7 +173,7 @@ void createvfs ( char *P1, int P2 )
     if(errorCheck==0) {
         create_vfs(P1,P2);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","w");
+        fp=fopen("../test/SUCCESS.txt","w");
         fprintf(fp,"%s","createvfs_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -189,7 +189,7 @@ void mountvfs ( char *P1 )
     if(errorCheck==0) {
         mount_vfs(P1);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","mountvfs_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -205,7 +205,7 @@ void unmountvfs ( char *P1 )
     if(errorCheck==0) {
         unmount_vfs(P1);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","unmountvfs_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -221,7 +221,7 @@ void makedir ( char *P1, char *P2 )
     if(errorCheck==0) {
         makeDirRec(P1,P2);  
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","makedir_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -237,7 +237,7 @@ void deletedir ( char *P1 )
     if(errorCheck==0) {
         deleteDir(P1);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","deletedir_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -253,7 +253,7 @@ void movedir ( char *P1, char *P2 )
     if(errorCheck==0) {
         moveDir(P1,P2);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","movedir_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -269,7 +269,7 @@ void listdir ( char *P1, int P2, char *P3 )
     if(errorCheck==0) {
         listDir(P1,P2,P3);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","listdir_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -285,7 +285,7 @@ void addfile ( char *P1, char *P2, char *P3 )
     if(errorCheck==0) {
         add_file(P1,P2,P3);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","addfile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -301,7 +301,7 @@ void listfile ( char *P1, char *P2 )
     if(errorCheck==0) {
         list_file(P1,P2);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","listfile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -317,7 +317,7 @@ void updatefile ( char *P1, char *P2 )
     if(errorCheck==0) {
         update_file(P1,P2);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","updatefile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -333,7 +333,7 @@ void removefile ( char *P1 )
     if(errorCheck==0) {
         remove_file(P1);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","removefile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -349,7 +349,7 @@ void movefile ( char *P1, char *P2 )
     if(errorCheck==0) {
         move_file(P1,P2);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","movefile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -365,7 +365,7 @@ void copyfile ( char *P1, char *P2 )
     if(errorCheck==0) {
         copy_file(P1,P2);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","copyfile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -381,7 +381,7 @@ void exportfile ( char *P1, char *P2 )
     if(errorCheck==0) {
         export_file(P1,P2);
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","exportfile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
@@ -397,7 +397,7 @@ void searchfile ( char *P1, char *P2 )
     if(errorCheck==0) {
         search_file(P1,P2);   
         FILE *fp;
-        fp=fopen("../text_files/SUCCESS.txt","a+");
+        fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","searchfile_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
