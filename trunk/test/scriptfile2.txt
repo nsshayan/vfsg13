@@ -6,3 +6,5 @@ mountvfs iitkgp36
 makedir /vehicle honda
 movedir /vehicle/honda /
 addfile / file1.txt /usr/include/syscall.h
+movefile /file1.txt /vehicle
+
