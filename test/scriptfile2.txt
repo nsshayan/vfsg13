@@ -1,7 +1,7 @@
-createvfs iitkgp34 1024
-mountvfs iitkgp34
+createvfs iitkgp36 1024
+mountvfs iitkgp36
 makedir /vehicle scooter
-unmountvfs iitkgp34
-mountvfs iitkgp34
+unmountvfs iitkgp36
+mountvfs iitkgp36
 makedir /vehicle honda
-unmountvfs iitkgp34
+movedir /vehicle/honda /
