@@ -138,6 +138,7 @@ void moveDir(char P1[],char P2[])
 	}
 	printf("\n previous ptr %s\n", prevPtr->fd_tree->fileName);
 
+	if (strcasecmp(P2,"root")!=0) {
 	strcpy(tempP1,P2);
 	count=countSlash(tempP1);
 	token=stringtok(tempP1);	
@@ -168,6 +169,9 @@ void moveDir(char P1[],char P2[])
 	strcat(destPath,destPtr->fd_tree->fileName);
 
 	printf("\n destPath %s\n",destPath);
+	}
+	else 
+	destPtr=root;
 
 	if(currPtr==NULL)
 		printf("No such directory");// error code to be used
@@ -186,6 +190,7 @@ void moveDir(char P1[],char P2[])
 	strcpy(destPath,currPtr->fd_tree->fileName);
 	if(currPtr->leftChild!=NULL)
 		duplicatecurrPtr=currPtr->leftChild;
+	else duplicatecurrPtr=currPtr;
 
 	changeFullPath(duplicatecurrPtr,destPath);
 
@@ -203,16 +208,16 @@ void moveDir(char P1[],char P2[])
 }
 
 
-void changeFullPath(struct nAryTree *temp,char destPath[100])
+void changeFullPath(struct nAryTree *temp,char destPath[])
 {	
 	if(temp != NULL)
 	{
 		strcpy(temp->fd_tree->fullPathName,destPath);
 		printf("\n right Sibling of %s",temp->fd_tree->fileName);
 		printf("\n right Sibling path %s",temp->fd_tree->fullPathName);
-		print(temp->rightSibling);
+		changeFullPath(temp->rightSibling,destPath);
 		printf("\nleftChild of %s",temp->fd_tree->fileName);
 		printf("\nleftChild path %s",temp->fd_tree->fullPathName);
-		print(temp->leftChild);
+		changeFullPath(temp->leftChild,destPath);
 	}		
 }
