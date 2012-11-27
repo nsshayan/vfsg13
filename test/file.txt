@@ -1,4 +1,0 @@
-road 
-rail 
-air 
-platform 

@@ -1,6 +1,0 @@
-vehicle 
-transport 
-road 
-highway 
-file2.txt 
-file1.txt 

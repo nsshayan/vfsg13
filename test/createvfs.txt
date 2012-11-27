@@ -1,5 +1,0 @@
-createvfs shayan_ 1024
-createvfs $123 1024
-createvfs sjdf 1023
-createvfs sjhd 1048577
-createvfs shayan 1024
