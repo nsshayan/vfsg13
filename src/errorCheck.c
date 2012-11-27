@@ -326,13 +326,17 @@ int error_movedir(char *P1, char *P2)
         goto exit;
     }
    
-    currPtr=curPtrFunc(P2,root);
-    destPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc(P1,root);
+	currPtr=temp2;
+	temp2=NULL;
+    destPtr=curPtrFunc(P2,root);
+	destPtr=temp2;
+	temp2=NULL;
 //#define ERR_VFS_MOVEDIR_05 "DESTINATION_ALREADY_HAVE_SOURCE_DIR"
     destPtr=destPtr->leftChild;
     while(destPtr!=NULL)
     {
-        if(strcasecmp(destPtr->leftChild->fd_tree->fileName,currPtr->fd_tree->fileName)==0)
+        if(strcasecmp(destPtr->fd_tree->fileName,currPtr->fd_tree->fileName)==0)
         {
             flag=5;
             fprintf(fp,"%s",ERR_VFS_MOVEDIR_05);
@@ -342,9 +346,13 @@ int error_movedir(char *P1, char *P2)
     destPtr=destPtr->rightSibling;
     }
 //#define ERR_VFS_MOVEDIR_06 "CANNOT_MOVE_PARENT_TO_CHILD_DIR"
-    destPtr=curPtrFunc(P1,root);
-    currPtr=curPtrFunc(P2,root);
-        if(currPtr->leftChild==destPtr)
+  /*  currPtr=curPtrFunc(P1,root);
+	currPtr=temp2;
+	temp2=NULL;
+    destPtr=curPtrFunc(P2,root);
+	destPtr=temp2;
+	temp2=NULL;
+        if(destPtr->leftChild==currPtr)
         {
             flag=6;
             fprintf(fp,"%s",ERR_VFS_MOVEDIR_06);
@@ -352,8 +360,8 @@ int error_movedir(char *P1, char *P2)
             goto exit;
         }
        
-    currPtr=currPtr->leftChild;
-    while(currPtr!=NULL)
+    destPtr=destPtr->leftChild;
+    while(destPtr!=NULL)
     {
         if(strcasecmp(currPtr->leftChild->fd_tree->fileName,destPtr->fd_tree->fileName)==0)
         {
@@ -362,9 +370,11 @@ int error_movedir(char *P1, char *P2)
             fprintf(fp,"%s","\n");
             goto exit;
         }
-    }
+    }*/
 //#define ERR_VFS_MOVEDIR_07 "DESTINATION_CANNOT_BE_FILE"
-    destPtr=curPtrFunc(P1,root);
+    destPtr=curPtrFunc(P2,root);
+	destPtr=temp2;
+	temp2=NULL;
     if((destPtr->fd_tree->fileType=='F')||(destPtr->fd_tree->fileType=='f'))
     {
         flag=6;

@@ -249,15 +249,15 @@ void movedir ( char *P1, char *P2 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //moveDir(P1,P2);
-   // errorCheck=error_movedir(P1,P2);
-    //if(errorCheck==0) {
+   errorCheck=error_movedir(P1,P2);
+    if(errorCheck==0) {
         moveDir(P1,P2);   
-      /*  FILE *fp;
+        FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","movedir_success");
         fprintf(fp,"%c",'\n');
         fclose(fp);
-    }*/
+    }
     printf("movedir_TO_BE_DONE\n");
 }
 
