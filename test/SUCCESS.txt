@@ -1,7 +1,9 @@
-DATA_FILE_ALREADY_EXISTS
+createvfs_success
 mountvfs_success
-DIRECTORY_ALREADY_EXISTS
+makedir_success
 unmountvfs_success
 mountvfs_success
 makedir_success
-SOURCE_CANNOT_BE_FILE
+movedir_success
+addfile_success
+CANNOT_FIND_SOURCEFILE
