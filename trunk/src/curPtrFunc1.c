@@ -17,14 +17,14 @@ struct nAryTree *curPtrFunc1(char P1[],struct nAryTree *temp) {
 	if (count>0) {
 		n=strlen(P1)-(strlen(token[count])+1);
 		strcpy(tempP2,token[count]);
-		strncpy(tempP1,P1,n);		
+		strncpy(tempP1,P1,n);	
+		curPtr=currPtrReturn(tempP1,tempP2);	
 	}
 	else {
-		strcpy(tempP2,"root");
-		strcpy(tempP1,"root");		
+		curPtr=root;	
 	}
 
-	curPtr=currPtrReturn(tempP1,tempP2);
+	
 
 return curPtr;
 
