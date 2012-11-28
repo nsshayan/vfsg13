@@ -9,7 +9,8 @@ int error_addfile(char *P1, char *P2, char *P3)
     FILE *mainfp,*fp;
     int i,flag=0,size;
     struct nAryTree *currPtr;
-fp=fopen("../test/SUCCESS.txt","a");
+    currPtr=(struct nAryTree *)	malloc(sizeof(struct nAryTree));
+    fp=fopen("../test/SUCCESS.txt","a");
 
 //#define ERR_VFS_ADDFILE_07 "VFS_NOT_MOUNTED"
     if(root==NULL)
@@ -37,8 +38,8 @@ fp=fopen("../test/SUCCESS.txt","a");
             goto exit;       
         }
 //#define ERR_VFS_ADDFILE_03 "FILE_ALREADY_EXISTS"
-    currPtr=curPtrFunc(P1,root);
-    if(strcasecmp(currPtr->leftChild->fd_tree->fileName,P2)==0)
+    currPtr=curPtrFunc1(P1,root);    
+    if(currPtr!=NULL && strcasecmp(currPtr->leftChild->fd_tree->fileName,P2)==0)
     {
         flag=3;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_03);
@@ -111,7 +112,7 @@ int error_listfile(char *P1, char *P2)
         goto exit;
     }
 //#define ERR_VFS_LISTFILE_01 "SOURCE_FILE_PATH_NOT_FOUND"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root);  
     if(currPtr==NULL)
     {
         flag=1;
@@ -166,7 +167,7 @@ int error_updatefile(char *P1, char *P2)
         goto exit;
     }
 //#define ERR_VFS_UPDATEFILE_01 "INTERNAL_FILE_NOT_FOUND"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root); 
     if(currPtr==NULL)
     {
         flag=1;
@@ -214,8 +215,7 @@ int error_removefile(char *P1)
         fprintf(fp,"%s","\n");
         goto exit;
     }
-    currPtr=curPtrFunc(P1,root);
-   
+    currPtr=curPtrFunc1(P1,root);   
     //#define ERR_VFS_REMOVEFILE_01 "CANNOT_FIND_SPECIFIED_FILE"
     if(currPtr==NULL)
     {
@@ -261,7 +261,7 @@ int error_movefile(char *P1,char *P2)
         goto exit;
     }
 //#define ERR_VFS_MOVEFILE_01 "CANNOT_FIND_SOURCEFILE"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root);
     if(currPtr==NULL)
     {
         flag=1;
@@ -270,7 +270,7 @@ int error_movefile(char *P1,char *P2)
         goto exit;   
     }
 //#define ERR_VFS_MOVEFILE_02 "CANNOT_FIND_DESTINATION_PATH"
-    currPtr=curPtrFunc(P2,root);
+    currPtr=curPtrFunc1(P2,root);
     if(currPtr==NULL)
     {
         flag=1;
@@ -307,7 +307,7 @@ int error_copyfile(char *P1,char *P2)
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_01 "CANNOT_FIND_SOURCEFILE"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root);   
     if(currPtr==NULL)
     {
         flag=1;
@@ -316,7 +316,7 @@ int error_copyfile(char *P1,char *P2)
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_02 "CANNOT_FIND_DESTINATIONPATH"
-    destPtr=curPtrFunc(P2,root);
+    destPtr=curPtrFunc1(P2,root);  
     if(destPtr==NULL)
     {
         flag=2;
@@ -370,7 +370,7 @@ int error_exportfile(char *P1,char *P2)
         goto exit;
     }
 //#define ERR_VFS_EXPORTFILE_01 "CANNOT_FIND_SOURCEFILE"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root);    
     if(currPtr==NULL)
     {
         flag=1;

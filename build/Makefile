@@ -1,7 +1,7 @@
 OBJECTS1 = ../bin/vfsdriver.o ../bin/test.o ../bin/narrtest.o ../bin/makeDir.o  ../bin/listDir.o ../bin/bstTree.o ../bin/structhash1.o 
 OBJECTS2 = ../bin/searchNary.o ../bin/searchFunc.o ../bin/stringtok.o ../bin/deleteDir.o ../bin/moveDir.o ../bin/addFile.o ../bin/listFile.o
 OBJECTS3 = ../bin/updateFile.o ../bin/removeFile.o ../bin/exportFile.o ../bin/moveFile.o ../bin/copyFile.o ../bin/unmountVfs.o 
-OBJECTS4 = ../bin/errorCheck.o ../bin/errorCheck1.o ../bin/currPtrRet.o ../bin/makeDirP.o
+OBJECTS4 = ../bin/errorCheck.o ../bin/errorCheck1.o ../bin/currPtrRet.o ../bin/makeDirP.o ../bin/curPtrFunc1.o
 
 LDFFLAG = -g -Wall -I ../include/ -I ../src/
 
@@ -34,6 +34,9 @@ newfile:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
 
 ../bin/searchNary.o:../include/mainHeader.h ../src/searchNary.c
 	gcc $(LDFFLAG) -c ../src/searchNary.c -o ../bin/searchNary.o
+
+../bin/curPtrFunc1.o:../include/mainHeader.h ../include/funcPrototype3.h ../src/curPtrFunc1.c
+	gcc $(LDFFLAG) -c ../src/curPtrFunc1.c -o ../bin/curPtrFunc1.o
 
 ../bin/searchFunc.o:../include/mainHeader.h ../src/searchFunc.c
 	gcc $(LDFFLAG) -c ../src/searchFunc.c -o ../bin/searchFunc.o
