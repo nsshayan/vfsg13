@@ -5,5 +5,3 @@ unmountvfs_success
 mountvfs_success
 makedir_success
 SOURCE_CANNOT_BE_FILE
-addfile_success
-movefile_success

@@ -27,3 +27,5 @@ extern int error_copyfile(char *,char *);
 extern int error_exportfile(char *,char *);
 
 extern int error_searchfile(char *,char *);
+
+extern struct nAryTree *curPtrFunc1(char [],struct nAryTree *);
