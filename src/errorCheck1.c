@@ -39,7 +39,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         }
 //#define ERR_VFS_ADDFILE_03 "FILE_ALREADY_EXISTS"
     currPtr=curPtrFunc1(P1,root);    
-    if(currPtr!=NULL && strcasecmp(currPtr->leftChild->fd_tree->fileName,P2)==0)
+    if(currPtr!=NULL && currPtr->leftChild!=NULL && strcasecmp(currPtr->leftChild->fd_tree->fileName,P2)==0)
     {
         flag=3;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_03);
@@ -70,6 +70,16 @@ int error_addfile(char *P1, char *P2, char *P3)
 //#define ERR_VFS_ADDFILE_05 "CANNOT_WRITE_TO_DATAFILE"
     //mainfp=fopen();
 //#define ERR_VFS_ADDFILE_06 "FILE_TOO_LARGE"
+
+    mainfp=fopen(P3,"r");
+    if(mainfp==NULL) {
+	flag=8;
+        fprintf(fp,"%s",ERR_VFS_ADDFILE_08);
+        fprintf(fp,"%s","\n");        
+        goto exit;
+    }
+    fclose(mainfp);
+
     mainfp=fopen(P3,"r");
     fseek(mainfp,0,2);
    
