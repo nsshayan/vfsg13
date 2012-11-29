@@ -82,6 +82,7 @@ int error_mountvfs(char *P1) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOUNT_00);
         fprintf(fp,"%s","\n");
+	fclose(fp);
         goto exit;
     }
    
@@ -112,7 +113,7 @@ int error_mountvfs(char *P1) {
 
 exit:
 if(mainfp!=NULL && root!=NULL)
-    fclose(fp);
+    fclose(mainfp);
 return flag;
 }
 
@@ -240,7 +241,7 @@ int error_deletedir(char *P1) {
         goto exit;
     }
 
-    currPtr=curPtrFunc(P1,root);
+   currPtr=curPtrFunc1(P1,root); 
 //#define ERR_VFS_DELETEDIR_00 "VFS_INSUFFICIENT_ARGUMENTS"
     if(P1==NULL)
     {
@@ -300,7 +301,7 @@ int error_movedir(char *P1, char *P2)
     }
 //#define ERR_VFS_MOVEDIR_01 "CANNOT_FIND_SPECIFIED_SOURCEDIR"
 //(if specified dir is not there, it is not created in this case unlike in add dir)
-    currPtr=curPtrFunc(P2,root);
+   currPtr=curPtrFunc1(P2,root); 
     if(currPtr==NULL)
     {
         flag=1;
@@ -309,7 +310,7 @@ int error_movedir(char *P1, char *P2)
         goto exit;
     }
 //#define ERR_VFS_MOVEDIR_02 "CANNOT_FIND_SPECIFIED_DESTINATIONDIR"
-    currPtr=curPtrFunc(P1,root);
+   currPtr=curPtrFunc1(P1,root); 
     if(currPtr==NULL)
     {
         flag=2;
@@ -326,12 +327,8 @@ int error_movedir(char *P1, char *P2)
         goto exit;
     }
    
-    currPtr=curPtrFunc(P1,root);
-	currPtr=temp2;
-	temp2=NULL;
-    destPtr=curPtrFunc(P2,root);
-	destPtr=temp2;
-	temp2=NULL;
+   currPtr=curPtrFunc1(P1,root); 
+    destPtr=curPtrFunc1(P2,root); 
 //#define ERR_VFS_MOVEDIR_05 "DESTINATION_ALREADY_HAVE_SOURCE_DIR"
     destPtr=destPtr->leftChild;
     while(destPtr!=NULL)
@@ -346,12 +343,8 @@ int error_movedir(char *P1, char *P2)
     destPtr=destPtr->rightSibling;
     }
 //#define ERR_VFS_MOVEDIR_06 "CANNOT_MOVE_PARENT_TO_CHILD_DIR"
-  /*  currPtr=curPtrFunc(P1,root);
-	currPtr=temp2;
-	temp2=NULL;
-    destPtr=curPtrFunc(P2,root);
-	destPtr=temp2;
-	temp2=NULL;
+  /*  currPtr=curPtrFunc1(P1,root); 
+    destPtr=curPtrFunc1(P2,root); 
         if(destPtr->leftChild==currPtr)
         {
             flag=6;
@@ -372,9 +365,7 @@ int error_movedir(char *P1, char *P2)
         }
     }*/
 //#define ERR_VFS_MOVEDIR_07 "DESTINATION_CANNOT_BE_FILE"
-    destPtr=curPtrFunc(P2,root);
-	destPtr=temp2;
-	temp2=NULL;
+    destPtr=curPtrFunc1(P2,root); 
     if((destPtr->fd_tree->fileType=='F')||(destPtr->fd_tree->fileType=='f'))
     {
         flag=6;
@@ -406,7 +397,7 @@ int error_listdir(char *P1, int P2, char *P3 )
 
     }
 //#define ERR_VFS_LISTDIR_00 "VFS_INSUFFICIENT_ARGUMENTS"
-    if(P1==NULL||P2==0||P3==NULL)
+    if(P1==NULL ||P3==NULL)
     {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_00);
@@ -414,7 +405,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         goto exit;
     }
 //#define ERR_VFS_LISTDIR_01 "CANNOT_FIND_SPECIFIED_PATH_OR_DIR"
-    currPtr=curPtrFunc(P1,root);
+    currPtr=curPtrFunc1(P1,root); 
     if(currPtr==NULL)
     {
         flag=1;
@@ -423,7 +414,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         goto exit;   
     }
 //#define ERR_VFS_LISTDIR_02 "INVALID_FLAG"
-    if((P2!=0)||(P2!=1))
+    if((P2!=0)&&(P2!=1))
     {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_02);

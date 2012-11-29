@@ -29,7 +29,7 @@ void add_file ( char *P1, char *P2, char *P3) {
 	
 	
 	//opening the main vfs file
-	mainfp=fopen("iitkgp36","rb+");
+	mainfp=fopen(metaHeader.fileLabel,"rb+");
 	//fread(&mh,sizeof(struct mainHeader),1,mainfp);//copying the updated metaheader to the variable mh
 	
 	for( blkloc=0;blkloc<1023;blkloc++)

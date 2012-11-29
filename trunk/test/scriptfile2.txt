@@ -1,9 +1,30 @@
-createvfs iitkgp36 1024
-mountvfs iitkgp36
-makedir /vehicle scooter
-unmountvfs iitkgp36
-mountvfs iitkgp36
-makedir /vehicle honda
-movedir /vehicle/honda /
-addfile / file1.txt /usr/include/syscall.h
-movefile /file.txt /vehicle
+createvfs iiitb
+createvfs iiitb 1024
+createvfs iiitb 1024
+mountvfs
+mountvfs iitb
+mountvfs iiitb 
+mountvfs iiitb 
+makedir /home/bin
+makedir / /home
+makedir / home
+makedir /home/bin1/bin2 bin3
+makedir /home/bin1 test
+deletedir /home1
+deletedir /home/bin1/bin2
+movedir /home/bin
+movedir /home/bin /
+movedir /home/bin1/bin2/bin3 /home/bin1
+addfile /home file1 
+addfile /home /file1 /usr/include/hi.txt
+addfile /home file1 /usr/include/hi.txt
+addfile /home file2 /usr/include/hi2.txt
+addfile /home file1 /usr/include/hi.txt
+addfile /home file1 /user/bin/hello.txt
+listfile /home/file
+listfile /home /tmp/listfile.txt
+listfile /home/file1 /tmp/listfile.txt
+updatefile /home/file1
+exportfile /home/file2 
+searchfile fil /tmp/searchresult.txt
+unmountvfs iiitb
