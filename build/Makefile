@@ -1,7 +1,7 @@
 OBJECTS1 = ../bin/vfsdriver.o ../bin/test.o ../bin/narrtest.o ../bin/makeDir.o  ../bin/listDir.o ../bin/bstTree.o ../bin/structhash1.o 
 OBJECTS2 = ../bin/searchNary.o ../bin/searchFunc.o ../bin/stringtok.o ../bin/deleteDir.o ../bin/moveDir.o ../bin/addFile.o ../bin/listFile.o
 OBJECTS3 = ../bin/updateFile.o ../bin/removeFile.o ../bin/exportFile.o ../bin/moveFile.o ../bin/copyFile.o ../bin/unmountVfs.o 
-OBJECTS4 = ../bin/errorCheck.o ../bin/errorCheck1.o ../bin/currPtrRet.o ../bin/makeDirP.o ../bin/curPtrFunc1.o
+OBJECTS4 = ../bin/errorCheck.o ../bin/errorCheck1.o ../bin/currPtrRet.o ../bin/makeDirP.o ../bin/curPtrFunc1.o ../bin/manvfs.o
 
 LDFFLAG = -g -Wall -I ../include/ -I ../src/
 
@@ -82,6 +82,10 @@ vfsgroup13:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
 
 ../bin/errorCheck1.o:../include/mainHeader.h ../include/funcPrototype.h ../include/funcPrototype2.h ../include/funcPrototype3.h ../src/errorCheck1.c
 	gcc $(LDFFLAG) -c ../src/errorCheck1.c -o ../bin/errorCheck1.o
+
+../bin/manvfs.o:../include/mainHeader.h ../include/funcPrototype.h ../include/funcPrototype2.h ../include/funcPrototype3.h ../src/manvfs.c
+	gcc $(LDFFLAG) -c ../src/manvfs.c -o ../bin/manvfs.o
+
 
 clean:
 	rm ../bin/*.o 
