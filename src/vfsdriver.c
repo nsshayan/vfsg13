@@ -37,6 +37,7 @@ void movefile ( char *P1, char *P2 );
 void copyfile ( char *P1, char *P2 );
 void exportfile ( char *P1, char *P2 );
 void searchfile ( char *P1, char *P2 );
+void manvfs ( char *P1 );
 
 void processcommand( char *command, char *P1, char *P2, char *P3 );
 
@@ -89,7 +90,7 @@ int main( int argc, char *argv[] )
 		 printf("Command:%s:p1:%s:p2:%s:p3:%s\n",command, par1, par2, par3); 
 	
 		if((strcmp(command,"createvfs")!=0)&&(strcmp(command,"mountvfs")!=0)
-			&&(strcmp(command,"unmountvfs")!=0)&&(strcmp(command," ")!=0)&&(strcmp(command,"searchfile")!=0))
+			&&(strcmp(command,"unmountvfs")!=0)&&(strcmp(command," ")!=0)&&(strcmp(command,"searchfile")!=0)&&(strcmp(command,"man")!=0))
 		{
 			
 			if(strlen(par1)==1)
@@ -162,6 +163,8 @@ void processcommand( char *command, char *P1, char *P2, char *P3 )
 		exportfile (P1,P2);
 	else if( strcmp(command, "searchfile") == 0 )
 		searchfile (P1,P2);
+	else if( strcmp(command, "man") == 0 )
+		manvfs (P1);	
 	else
 		printf("Ignoring invalid command %s\n", command);
 }
@@ -500,3 +503,7 @@ void searchfile ( char *P1, char *P2 )
     printf("searchfile_TO_BE_DONE\n");
 }
 
+void manvfs ( char *P1 )
+{
+	man_vfs(P1);
+}
