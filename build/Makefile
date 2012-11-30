@@ -9,7 +9,7 @@ vfsdriver:../include/mainHeader.h ../include/funcPrototype.h ../include/funcProt
 	gcc $(LDFFLAG) -c ../src/vfsdriver.c  -o ../bin/vfsdriver.o
 
 vfsgroup13:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
-	gcc $(LDFFLAG) $(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4) -o ../bin/newfile
+	gcc $(LDFFLAG) $(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4) -o ../bin/vfsgroup13
 
 ../bin/test.o:../include/mainHeader.h ../include/funcPrototype.h ../src/test.c
 	gcc $(LDFFLAG) -c ../src/test.c -o ../bin/test.o
@@ -89,5 +89,5 @@ vfsgroup13:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
 
 clean:
 	rm ../bin/*.o 
-	rm ../bin/newfile
+	rm ../bin/vfsgroup13
 
