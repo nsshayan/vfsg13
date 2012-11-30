@@ -217,9 +217,11 @@ void makedir ( char *P1, char *P2 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //makeDirRec(P1,P2);
+	P1[strlen(P1)-1]='\0';
+	P2[strlen(P2)-1]='\0';
     errorCheck=error_makedir(P1,P2);
     if(errorCheck==0) {
-        makeDirRec(P1,P2);  
+	makeDirRec(P1,P2);  
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","makedir_success");
@@ -233,6 +235,7 @@ void deletedir ( char *P1 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //deleteDir(P1);
+	P1[strlen(P1)-1]='\0';
     errorCheck=error_deletedir(P1);
     if(errorCheck==0) {
         deleteDir(P1);   
@@ -249,6 +252,8 @@ void movedir ( char *P1, char *P2 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //moveDir(P1,P2);
+	P1[strlen(P1)-1]='\0';
+	P2[strlen(P2)-1]='\0';
    errorCheck=error_movedir(P1,P2);
     if(errorCheck==0) {
         moveDir(P1,P2);   
@@ -265,6 +270,8 @@ void listdir ( char *P1, int P2, char *P3 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
 //    listDir(P1,P2,P3);
+	P1[strlen(P1)-1]='\0';
+	//P2[strlen(P2)-1]='\0';
     errorCheck=error_listdir(P1,P2,P3);
     if(errorCheck==0) {
         listDir(P1,P2,P3);
@@ -297,7 +304,7 @@ void listfile ( char *P1, char *P2 )
 {
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //list_file(P1,P2);
-    errorCheck=error_listfile(P1,P2);
+	errorCheck=error_listfile(P1,P2);
     if(errorCheck==0) {
         list_file(P1,P2);
         FILE *fp;
