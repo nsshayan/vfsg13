@@ -230,9 +230,15 @@ void makedir ( char *P1, char *P2 )
 	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //makeDirRec(P1,P2);
+	if(P1[strlen(P1)-1]=='/')
 	P1[strlen(P1)-1]='\0';
+	if(P2[strlen(P2)-1]=='/')
 	P2[strlen(P2)-1]='\0';
-    errorCheck=error_makedir(P1,P2);
+	 errorCheck=error_makedir(P1,P2);
+	if(orgP1[strlen(orgP1)-1]=='/')
+	orgP1[strlen(orgP1)-1]='\0';
+	if(orgP2[strlen(orgP2)-1]=='/')
+	orgP2[strlen(orgP2)-1]='\0';
     if(errorCheck==0) {
         makeDirRec(orgP1,orgP2);  
         FILE *fp;
@@ -252,7 +258,12 @@ void deletedir ( char *P1 )
 
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //deleteDir(P1);
+
+	if(P1[strlen(P1)-1]=='/')
+	{
 	P1[strlen(P1)-1]='\0';
+	orgP1[strlen(orgP1)-1]='\0';
+	}
     errorCheck=error_deletedir(P1);
     if(errorCheck==0) {
         deleteDir(orgP1);   
@@ -273,8 +284,16 @@ void movedir ( char *P1, char *P2 )
 	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //moveDir(P1,P2);
+	if(P1[strlen(P1)-1]=='/')
+	{
 	P1[strlen(P1)-1]='\0';
+	orgP1[strlen(orgP1)-1]='\0';
+	}
+	if(P2[strlen(P2)-1]=='/')
+	{
 	P2[strlen(P2)-1]='\0';
+	orgP2[strlen(orgP2)-1]='\0';
+	}
    errorCheck=error_movedir(P1,P2);
     if(errorCheck==0) {
         moveDir(orgP1,orgP2);   
@@ -295,7 +314,11 @@ void listdir ( char *P1, int P2, char *P3 )
 	strcpy(orgP3,P3);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
 //    listDir(P1,P2,P3);
+	if(P1[strlen(P1)-1]=='/')
+	{	
 	P1[strlen(P1)-1]='\0';
+	orgP1[strlen(orgP1)-1]='\0';
+	}
 	//P2[strlen(P2)-1]='\0';
     errorCheck=error_listdir(P1,P2,P3);
     if(errorCheck==0) {
@@ -320,6 +343,11 @@ void addfile ( char *P1, char *P2, char *P3 )
 
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //add_file(P1,P2,P3);
+	if(P1[strlen(P1)-1]=='/')
+	{	
+	P1[strlen(P1)-1]='\0';
+	orgP1[strlen(orgP1)-1]='\0';
+	}
     errorCheck=error_addfile(P1,P2,P3);
     if(errorCheck==0) {
         add_file(orgP1,orgP2,orgP3);

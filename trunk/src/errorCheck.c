@@ -166,6 +166,7 @@ int error_makedir(char *P1,char *P2) {
    
     fp=fopen("../test/SUCCESS.txt","a");
     //mainfp=fopen(metaHeader.fileLabel,"rb");
+	
 
 	//#define ERR_VFS_MAKEDIR_05 "VFS_NOT_MOUNTED"
      if(root==NULL)
@@ -184,6 +185,9 @@ int error_makedir(char *P1,char *P2) {
         fprintf(fp,"%s","\n");
         goto exit;
     }
+	
+	
+
 //changed to FILESYSTEM_FULL from UNABLE_TO_CREATE_NEWDIR
 //#define ERR_VFS_MAKEDIR_01 "FILESYSTEM_FULL"
     if(metaHeader.noUsedDescriptor==1024)
@@ -241,7 +245,7 @@ int error_deletedir(char *P1) {
         goto exit;
     }
 
-   currPtr=curPtrFunc1(P1,root); 
+
 //#define ERR_VFS_DELETEDIR_00 "VFS_INSUFFICIENT_ARGUMENTS"
     if(P1==NULL)
     {
@@ -251,7 +255,8 @@ int error_deletedir(char *P1) {
         goto exit;
     }
    
-   
+
+   currPtr=curPtrFunc1(P1,root);    
 //#define ERR_VFS_DELETEDIR_01 "CANNOT_FIND_SPECIFIED_DIR"
     if(currPtr==NULL)
     {
@@ -299,6 +304,8 @@ int error_movedir(char *P1, char *P2)
         fprintf(fp,"%s","\n");
         goto exit;
     }
+
+
 //#define ERR_VFS_MOVEDIR_01 "CANNOT_FIND_SPECIFIED_SOURCEDIR"
 //(if specified dir is not there, it is not created in this case unlike in add dir)
    currPtr=curPtrFunc1(P2,root); 
