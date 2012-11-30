@@ -62,4 +62,5 @@ struct nAryTree *root,*temp2;
 node *bstroot;
 list *hashnode;
 int errorCheck;
+char vfsName[100];
 
