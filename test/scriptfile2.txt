@@ -3,7 +3,7 @@ createvfs myh 109
 mountvfs myvfs1
 makedir /usr hello
 addfile /usr/hello/ a.txt /usr/include/alloca.h
-addfile /usr/hello a.txt /usr/include/poll.h
+addfile /usr/hello/ b.txt /usr/include/poll.h
 movedir /usr/hello / /
 updatefile /usr/hello/a.txt /usr/include/endian.h
 exportfile /usr/hello/a.txt  /tmp/
