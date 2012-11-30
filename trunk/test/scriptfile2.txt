@@ -1,30 +1,17 @@
-createvfs iiitb
-createvfs iiitb 1024
-createvfs iiitb 1024
-mountvfs
-mountvfs iitb
-mountvfs iiitb 
-mountvfs iiitb 
-makedir /home/bin
-makedir / /home
-makedir / home
-makedir /home/bin1/bin2 bin3
-makedir /home/bin1 test
-deletedir /home1
-deletedir /home/bin1/bin2
-movedir /home/bin
-movedir /home/bin /
-movedir /home/bin1/bin2/bin3 /home/bin1
-addfile /home file1 
-addfile /home /file1 /usr/include/hi.txt
-addfile /home file1 /usr/include/hi.txt
-addfile /home file2 /usr/include/hi2.txt
-addfile /home file1 /usr/include/hi.txt
-addfile /home file1 /user/bin/hello.txt
-listfile /home/file
-listfile /home /tmp/listfile.txt
-listfile /home/file1 /tmp/listfile.txt
-updatefile /home/file1
-exportfile /home/file2 
-searchfile fil /tmp/searchresult.txt
-unmountvfs iiitb
+createvfs myvfs1 103
+createvfs myh 109
+mountvfs myvfs1
+makedir /usr hello
+addfile /usr/hello/ a.txt /usr/include/alloca.h
+addfile /usr/hello a.txt /usr/include/poll.h
+movedir /usr/hello / /
+updatefile /usr/hello/a.txt /usr/include/endian.h
+exportfile /usr/hello/a.txt  /tmp/
+removefile /usr/a.txt
+makedir /usr/hello hi
+addfile /usr/hello/hi abc.txt /usr/include/endian.h
+searchfile a out.txt 
+deletedir /usr/hello
+makedir /usr/hello kj
+listdir /usr 1 /tmp/
+unmountvfs myvfs1
