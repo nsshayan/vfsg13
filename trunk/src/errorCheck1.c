@@ -47,7 +47,8 @@ int error_addfile(char *P1, char *P2, char *P3)
         goto exit;
     }
 
-    currPtr=currPtr->leftChild;
+    if(currPtr!=NULL && currPtr->leftChild!=NULL)	
+	    currPtr=currPtr->leftChild;
     while(currPtr!=NULL)
     {
         if(strcasecmp(currPtr->fd_tree->fileName,P2)==0)

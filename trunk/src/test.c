@@ -18,7 +18,7 @@ void create_vfs(char *fileLabel, int blockNo) {
 	}
 	rewind(fp);
 
-	strcpy(metaHeader.fileLabel,fileLabel);
+	strcpy(metaHeader.fileLabel,fileLabel);	
 	metaHeader.maxFileDescriptor=1024;
 	
 	strcpy(metaHeader.fDescriptor[0].fileName,"ROOT");
@@ -47,8 +47,8 @@ struct nAryTree *mount_vfs(char *fileLabel)
 
 	//printing the meta header part
 	fread(&mh,sizeof(struct mainHeader),1,fp);
+	strcpy(vfsName,mh.fileLabel);
 	
-
 	printf("\n%s",mh.fileLabel);
 	printf("\n%d",mh.maxFileDescriptor);
 	printf("\n%d",mh.noUsedDescriptor);

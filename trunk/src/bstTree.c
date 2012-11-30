@@ -2,49 +2,6 @@
 #include "funcPrototype.h"
 
 
-/*void main(){
-    int a,b;
- 
-    while(1){
-    printf("Enter your choice \n 1: Add file \n 2: Search file \n 3: Delete file\n");
-    scanf("%d",&a);
- 
-    switch(a){
-        case 1:
-            do{
-                printf("Enter the filename or Exit to abort\n");
-                scanf("%s", filename);
-                if(strcmp(filename,"Exit"))
-                {             
-                printf("Enter the filepath\n");
-                scanf("%s", filepath);
-                printf("Enter the fdno.\n");
-                scanf("%d",& fdno);
-             
-                bstroot = insert(bstroot);
-                }
-                else
-                    break; 
-            }while(1); 
-            break;
-        case 2:
-            printf("Enter the filepath u want to search\n");
-            scanf("%s", filepath);
-            b=search(filepath,bstroot);
-            break;
-        case 3:
-            printf("Enter the filepath u want to delete\n");
-            scanf("%s", filepath);
-            deletebst(bstroot,filepath);
-            break;
-        default:
-            break;
-        }
-    }
- 
-}*/
-
-
 node* add(struct fileDescriptor *fdtemp){
     node *temp;
     char catpath[120];
@@ -102,29 +59,7 @@ node* bstinsert(node* temp,struct fileDescriptor *fd){
             temp1->leftchild=add(fd);
         }
     return bstroot;
-     
-
-    /*if(temp->leftchild == NULL && strcmp(temp->file->fullPathName,fd->fullPathName)<0){
-        temp->leftchild = add(fd);
-        return bstroot;
-    }     
-    else if(strcmp(temp->file->fullPathName,fd->fullPathName)<0){
-        temp=temp->leftchild;
-        bstroot=bstinsert(temp,fd);
-        return bstroot;
-    }
-
-
-    if(temp->rightchild==NULL && strcmp(temp->file->fullPathName,fd->fullPathName)>0){
-        temp->rightchild = add(fd);
-        return bstroot;
-    }
-    else if(strcmp(temp->file->fullPathName,fd->fullPathName)>0){
-        temp=temp->rightchild;
-        bstroot=bstinsert(temp,fd);
-        return bstroot;
-    }*/
-     
+         
 }
 
 int searchbst(char filename[],char filepath[],node *temp,char outfile[]){
