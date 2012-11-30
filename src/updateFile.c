@@ -48,7 +48,7 @@ parentP1=(char *)malloc(sizeof(char)*50);
 	printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
 	
 	fp=fopen(P2,"r");
-	mainfp=fopen(metaHeader.fileLabel,"rb+");
+	mainfp=fopen(vfsName,"rb+");
 	blockno=currPtr->fd_tree->blockNo;
 	fseek(mainfp,(sizeof(struct mainHeader)+blockno*1024),0);
 
