@@ -113,7 +113,7 @@ int main( int argc, char *argv[] )
 		 printf("Command:%s:p1:%s:p2:%s:p3:%s\n",command, par1, par2, par3); 
 		processcommand( command, par1, par2, par3 );
 	}
-printf("\n printing the n-ary tree");
+/*printf("\n printing the n-ary tree");
 print(root);
 printf("\n");
 
