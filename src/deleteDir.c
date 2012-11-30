@@ -8,7 +8,7 @@ void deleteDir(char P1[])
 	char prevFileName[50],currFileName[50];
 	int count;
 	char *parentP1,*parentP2;
-	int n,i,l2;
+	int n,i;
 	struct nAryTree *currPtr;
 	struct nAryTree *prevPtr;
 	struct nAryTree *temproot;
@@ -29,7 +29,7 @@ void deleteDir(char P1[])
 		printf("\n tokens are %s\n",token[i]);
 
 	n=strlen(P1)-(strlen(token[count])+1);
-	l2=strlen(token[count-1])+1;
+	//l2=strlen(token[count-1])+1;
 	printf("\npath %s\n",P1);
 	//printf("lengths %d %d %d",strlen(P1),strlen(token[count])+1,n);
 	
@@ -43,6 +43,7 @@ void deleteDir(char P1[])
 	printf("\nparent p1 %s\n",parentP1);
 	printf("\nP1 %s\n",P1);
 	strcpy(currFileName,token[count]);
+		
 	strcpy(prevFileName,token[count-1]);
 		
 	temproot=root;
@@ -71,11 +72,12 @@ void deleteDir(char P1[])
 		//printf("length of token-1  %d",strlen(token[count-1]));
 		//printf("lengths %d %d %d",strlen(parentP1),strlen(token[count-1])+1,n);
 		printf("\n n=%d\n",n);
-		printf("\nl2=%d\n",l2);
-	/*	for(i=0;i<(n-l2);i++)
+		//printf("\nl2=%d\n",l2);
+		/*for(i=0;i<(n);i++)
 		parentP2[i]=parentP1[i];*/
-		strncpy(parentP2,parentP1,n);
-		strcat(parentP2,"\0");
+		strcpy(parentP2,parentP1);
+		//strcat(parentP2,"\0");
+		parentP2[n]='\0';
 		printf("\n parent 2%s\n",parentP2);
 		
 			if(strcmp(parentP2,"root")!=0)

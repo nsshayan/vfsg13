@@ -40,6 +40,7 @@ void searchfile ( char *P1, char *P2 );
 
 void processcommand( char *command, char *P1, char *P2, char *P3 );
 
+
 int main( int argc, char *argv[] )
 {
 	FILE *scriptfp,*fp;
@@ -126,7 +127,7 @@ return 0;
 }
 
 void processcommand( char *command, char *P1, char *P2, char *P3 )
-{
+{	
 	if( strcmp(command, "createvfs") == 0 ){
 		int size = atoi(P2);
 		createvfs (P1,size);
@@ -167,11 +168,13 @@ void processcommand( char *command, char *P1, char *P2, char *P3 )
 
 void createvfs ( char *P1, int P2 )
 {
+	char orgP1[100];	
+	strcpy(orgP1,P1);	
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //create_vfs(P1,P2);   
     errorCheck=error_createvfs(P1,P2);
     if(errorCheck==0) {
-        create_vfs(P1,P2);   
+        create_vfs(orgP1,P2);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","w");
         fprintf(fp,"%s","createvfs_success");
@@ -183,11 +186,14 @@ void createvfs ( char *P1, int P2 )
 
 void mountvfs ( char *P1 )
 {
+	char orgP1[100];
+
+	strcpy(orgP1,P1);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //mount_vfs(P1);
     errorCheck=error_mountvfs(P1);
     if(errorCheck==0) {
-        mount_vfs(P1);   
+        mount_vfs(orgP1);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","mountvfs_success");
@@ -199,11 +205,14 @@ void mountvfs ( char *P1 )
 
 void unmountvfs ( char *P1 )
 {
+	char orgP1[100];
+
+	strcpy(orgP1,P1);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //unmount_vfs(P1);
     errorCheck=error_unmountvfs(P1);
     if(errorCheck==0) {
-        unmount_vfs(P1);   
+        unmount_vfs(orgP1);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","unmountvfs_success");
@@ -215,13 +224,17 @@ void unmountvfs ( char *P1 )
 
 void makedir ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //makeDirRec(P1,P2);
 	P1[strlen(P1)-1]='\0';
 	P2[strlen(P2)-1]='\0';
     errorCheck=error_makedir(P1,P2);
     if(errorCheck==0) {
-	makeDirRec(P1,P2);  
+        makeDirRec(orgP1,orgP2);  
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","makedir_success");
@@ -233,12 +246,16 @@ void makedir ( char *P1, char *P2 )
 
 void deletedir ( char *P1 )
 {
+	char orgP1[100];
+	
+	strcpy(orgP1,P1);
+
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //deleteDir(P1);
 	P1[strlen(P1)-1]='\0';
     errorCheck=error_deletedir(P1);
     if(errorCheck==0) {
-        deleteDir(P1);   
+        deleteDir(orgP1);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","deletedir_success");
@@ -250,13 +267,17 @@ void deletedir ( char *P1 )
 
 void movedir ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //moveDir(P1,P2);
 	P1[strlen(P1)-1]='\0';
 	P2[strlen(P2)-1]='\0';
    errorCheck=error_movedir(P1,P2);
     if(errorCheck==0) {
-        moveDir(P1,P2);   
+        moveDir(orgP1,orgP2);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","movedir_success");
@@ -268,13 +289,17 @@ void movedir ( char *P1, char *P2 )
 
 void listdir ( char *P1, int P2, char *P3 )
 {
+	char orgP1[100];
+	char orgP3[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP3,P3);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
 //    listDir(P1,P2,P3);
 	P1[strlen(P1)-1]='\0';
 	//P2[strlen(P2)-1]='\0';
     errorCheck=error_listdir(P1,P2,P3);
     if(errorCheck==0) {
-        listDir(P1,P2,P3);
+        listDir(orgP1,P2,orgP3);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","listdir_success");
@@ -286,11 +311,18 @@ void listdir ( char *P1, int P2, char *P3 )
 
 void addfile ( char *P1, char *P2, char *P3 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	char orgP3[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
+	strcpy(orgP3,P3);
+
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //add_file(P1,P2,P3);
     errorCheck=error_addfile(P1,P2,P3);
     if(errorCheck==0) {
-        add_file(P1,P2,P3);
+        add_file(orgP1,orgP2,orgP3);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","addfile_success");
@@ -302,11 +334,16 @@ void addfile ( char *P1, char *P2, char *P3 )
 
 void listfile ( char *P1, char *P2 )
 {
+
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */   
     //list_file(P1,P2);
-	errorCheck=error_listfile(P1,P2);
+    errorCheck=error_listfile(P1,P2);
     if(errorCheck==0) {
-        list_file(P1,P2);
+        list_file(orgP1,orgP2);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","listfile_success");
@@ -318,11 +355,15 @@ void listfile ( char *P1, char *P2 )
 
 void updatefile ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //update_file(P1,P2);
     errorCheck=error_updatefile(P1,P2);
     if(errorCheck==0) {
-        update_file(P1,P2);
+        update_file(orgP1,orgP2);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","updatefile_success");
@@ -334,11 +375,14 @@ void updatefile ( char *P1, char *P2 )
 
 void removefile ( char *P1 )
 {
+	char orgP1[100];
+
+	strcpy(orgP1,P1);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //remove_file(P1);
     errorCheck=error_removefile(P1);
     if(errorCheck==0) {
-        remove_file(P1);
+        remove_file(orgP1);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","removefile_success");
@@ -350,11 +394,15 @@ void removefile ( char *P1 )
 
 void movefile ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //move_file(P1,P2);
     errorCheck=error_movefile(P1,P2);
     if(errorCheck==0) {
-        move_file(P1,P2);
+        move_file(orgP1,orgP2);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","movefile_success");
@@ -366,11 +414,15 @@ void movefile ( char *P1, char *P2 )
 
 void copyfile ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //copy_file(P1,P2);
     errorCheck=error_copyfile(P1,P2);
     if(errorCheck==0) {
-        copy_file(P1,P2);
+        copy_file(orgP1,orgP2);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","copyfile_success");
@@ -382,11 +434,15 @@ void copyfile ( char *P1, char *P2 )
 
 void exportfile ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //export_file(P1,P2);
     errorCheck=error_exportfile(P1,P2);
     if(errorCheck==0) {
-        export_file(P1,P2);
+        export_file(orgP1,orgP2);
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","exportfile_success");
@@ -398,11 +454,15 @@ void exportfile ( char *P1, char *P2 )
 
 void searchfile ( char *P1, char *P2 )
 {
+	char orgP1[100];
+	char orgP2[100];
+	strcpy(orgP1,P1);
+	strcpy(orgP2,P2);
     /* Call the appropriate function with given arguments and display appropriate output on the screen */
     //search_file(P1,P2);
     errorCheck=error_searchfile(P1,P2);
     if(errorCheck==0) {
-        search_file(P1,P2);   
+        search_file(orgP1,orgP2);   
         FILE *fp;
         fp=fopen("../test/SUCCESS.txt","a+");
         fprintf(fp,"%s","searchfile_success");

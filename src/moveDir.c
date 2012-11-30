@@ -9,16 +9,17 @@ void moveDir(char P1[],char P2[])
 	char prevFileName[50],currFileName[50];
 	int count;
 	char *parentP1,*parentP2,*destParent;
-	int n,i,l2;
+	int n,i;
 	struct nAryTree *currPtr,*temproot;
 	struct nAryTree *prevPtr,*destPtr,*duplicatecurrPtr;
 	char tempP1[100];
-	parentP1=(char *)malloc(sizeof(char)*50);
-	parentP2=(char *)malloc(sizeof(char)*50);
-	destParent=(char *)malloc(sizeof(char)*50);
+	parentP1=(char *)calloc(sizeof(char),50);
+	parentP2=(char *)calloc(sizeof(char),50);
+	destParent=(char *)calloc(sizeof(char),50);
 	duplicatecurrPtr=(struct nAryTree *)malloc(sizeof(struct nAryTree));
 	
 	strcpy(tempP1,P1);
+	strcat(tempP1,"\0");
 	count=countSlash(tempP1);
 	token=stringtok(tempP1);
 
@@ -30,14 +31,14 @@ void moveDir(char P1[],char P2[])
 		printf("\n tokens are %s\n",token[i]);
 
 	n=strlen(P1)-(strlen(token[count])+1);
-	l2=strlen(token[count-1])+1;
+	//l2=strlen(token[count-1])+1;
 	printf("\npath %s\n",P1);
 	//printf("lengths %d %d %d",strlen(P1),strlen(token[count])+1,n);
 	
 	//copying the parent path
-		for(i=0;i<n;i++)
-			parentP1[i]=P1[i];
-	//strncpy(parentP1,P1,n);
+		/*for(i=0;i<n;i++)
+			parentP1[i]=P1[i];*/
+	strcpy(parentP1,P1);
 	//strcat(parentP1,'\0');
 	parentP1[n]='\0';
 	printf("\ntoken[0] %s\n",token[0]);
@@ -72,11 +73,11 @@ void moveDir(char P1[],char P2[])
 		//printf("length of token-1  %d",strlen(token[count-1]));
 		//printf("lengths %d %d %d",strlen(parentP1),strlen(token[count-1])+1,n);
 		printf("\n n=%d\n",n);
-		printf("\nl2=%d\n",l2);
-	/*	for(i=0;i<(n-l2);i++)
-		parentP2[i]=parentP1[i];*/
-		strncpy(parentP2,parentP1,n);
-		strcat(parentP2,"\0");
+		//printf("\nl2=%d\n",l2);
+		//for(i=0;i<n;i++)
+		//parentP2[i]=parentP1[i];
+		strcpy(parentP2,parentP1);
+		parentP2[n]='\0';		
 		printf("\n parent 2%s\n",parentP2);
 		
 			if(strcmp(parentP2,"root")!=0)
@@ -173,6 +174,8 @@ void moveDir(char P1[],char P2[])
 	else 
 	destPtr=root;
 
+	deletebst(currPtr->fd_tree->fileName,bstroot,currPtr->fd_tree->fullPathName);
+
 	if(currPtr==NULL)
 		printf("No such directory");// error code to be used
 	
@@ -200,10 +203,13 @@ void moveDir(char P1[],char P2[])
 	while(destPtr->rightSibling!=NULL)
 		destPtr=destPtr->rightSibling;
 	
-	destPtr->rightSibling=currPtr;	
+	destPtr->rightSibling=duplicatecurrPtr;	
 	}
 	else 
-		destPtr->leftChild=currPtr;
+		destPtr->leftChild=duplicatecurrPtr;
+
+	
+	bstinsert(bstroot,duplicatecurrPtr->fd_tree);
 
 }
 
