@@ -8,7 +8,7 @@ LDFFLAG = -g -Wall -I ../include/ -I ../src/
 vfsdriver:../include/mainHeader.h ../include/funcPrototype.h ../include/funcPrototype2.h ../include/funcPrototype3.h ../src/vfsdriver.c
 	gcc $(LDFFLAG) -c ../src/vfsdriver.c  -o ../bin/vfsdriver.o
 
-newfile:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
+vfsgroup13:$(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4)
 	gcc $(LDFFLAG) $(OBJECTS1) $(OBJECTS2) $(OBJECTS3) $(OBJECTS4) -o ../bin/newfile
 
 ../bin/test.o:../include/mainHeader.h ../include/funcPrototype.h ../src/test.c
