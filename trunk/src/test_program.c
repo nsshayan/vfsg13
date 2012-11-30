@@ -5,11 +5,11 @@
 int  main()
 {
 char *P1="/";
-char ch[100]="root";
+char ch[100]="root/";
 
 printf("\nThe string %s before rewriting\n",P1);
 
-
+printf("length=%d",strlen(ch));
 if(strlen(ch)==1)
 printf("\n the path is root only");
 

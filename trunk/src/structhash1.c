@@ -4,17 +4,31 @@
 struct fileDescripter *fd;
 
 char filename[20],filepath[50];
-list *a[52],*result[10];
+list *a[52];
 
-void search_file(char *P1,char *P2) {	
-	int i=0;
-	searchHash(P1);
-	while(result[i]!=NULL) {
-		searchbst(result[i]->file->fileName,result[i]->file->fullPathName,bstroot,P2);
-		i++;
-	}	
+
+/* int main(){
+	int a;
+	while(1){
+	printf("Enter your choice \n 1: Add file \n 2: Search file \n");
+	scanf("%d",&a);
 	
-}
+	switch(a){
+		case 1:
+			mount_vfs();				
+			break;
+		case 2:
+			printf("Enter the filename u want to search\n");
+			scanf("%s", filename);
+			search(filename);
+			break;
+		default:
+			break;
+		}
+	}
+	return 0;
+
+} */
 
 list* hashadd(char filename[],char filepath[], list *start){
 	list *temp,*llist;
@@ -49,10 +63,13 @@ void hashing(struct fileDescriptor *temp){
 	char b[100];
 	strcpy(b,temp->fullPathName);
 	y=c[0];
-	while(i!=52){
+	while(i!=53){
 		if(y==x){
 			a[i]=hashadd(c,b,a[i]);
 			break;
+		}
+		else{
+			a[i]=hashadd(c,b,a[i]);
 		}
 		x++;
 		i++;
@@ -61,16 +78,19 @@ void hashing(struct fileDescriptor *temp){
 }
 
 
-list * searchHash(char filename[]){
+llist * searchHash(char filename[]){
 	list *search;
 	int y,x=65,i=0,j=0;
 	y=filename[0];
-	list *start=NULL;
+	//llist *start=NULL;
 	char path[100];
-	while(i!=52){
+	while(i!=53){
 		if(y==x){
 			search=a[i];
 			break;
+		}
+		else{
+			search=a[i];
 		}
 		x++;
 		i++;
@@ -79,40 +99,39 @@ list * searchHash(char filename[]){
 	while(search != NULL){
 		if(!(strncmp(filename,search->file->fileName,strlen(filename)))){
 			printf("Filename=%s\nFilepath=%s\n",search->file->fileName,search->file->fullPathName);
-			result[j]=search;
-			strcpy(path,search->file->fullPathName);
-			start=listinsert(start,path);
+			//strcpy(path,search->file->fullPathName);
+			//start=listinsert(start,path);
 		}
 		search=search->next;
-		j++;
 	}
 	return start;
 }
 
 
-list *listinsert(list *start, char path[])
+llist *listinsert(llist *start, char path[])
 {	
-	list *temp,*temp2;
+	llist *temp,*temp2;
 	temp2=start;
-	temp=(list *)malloc(sizeof(list));
+	temp=(llist *)malloc(sizeof(llist));
 	strcpy(temp->paths,path);
 	temp->next=NULL;
 
 	if(start==NULL)
-	{	start=temp;		
+	{	start=temp;
+		return start;
 	}
 	else
 	{	while(temp2->next!=NULL)
 		{	temp2=temp2->next;
 		}
-		temp2->next=temp;		
+		temp2->next=temp;
+		return start;
 	}
-return start;
 }
 
 
 void delhash(node *temp,char filepathname[]){
-	char filename[100];
+	char filepath[100];
 	node *temp1=NULL;
 	list *index,*temp2;
 	while(temp)
@@ -129,19 +148,22 @@ void delhash(node *temp,char filepathname[]){
     	}
     	}
     	strcpy(filename,temp1->file->fileName);
-	int y,x=65,i=0;
+	int y,x=65,i=0,j=0;
 	y=filename[0];
-	while(i!=52){
+	while(i!=53){
 		if(y==x){
 			index=a[i];
 			break;
+		}
+		else{
+			index=a[i];
 		}
 		x++;
 		i++;
 	}
 		while(index->next!=NULL)
 		{	
-			if(!(strcmp(filename,index->file->fileName))){
+			if(!(strcmp(filename,index->file->filename))){
 				break;
 			}
 			temp2=index;
