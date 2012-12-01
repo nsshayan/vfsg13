@@ -92,9 +92,9 @@ struct tree *insertchild(struct tree *fdroot,struct fileDescriptor *fd){
 		nodeinsertptr->right = insertchild(nodeinsertptr->right, nodeinsertptr->fd_bst);
 	
 		
-	printf("before display of bst");
+	//printf("before display of bst");
 	
-	printf("after display of bst");
+	//printf("after display of bst");
 	return fdroot;
 }
 
@@ -182,7 +182,7 @@ void display(struct tree *info)
 {		
 	if(info!=NULL)
 	{
-	        printf(" \n bst nodes %s \n ",info->fd_bst->fileName);   
+	      //  printf(" \n bst nodes %s \n ",info->fd_bst->fileName);   
 		display(info->left);
 	        display(info->right);
         } 

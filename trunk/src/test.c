@@ -49,9 +49,9 @@ struct nAryTree *mount_vfs(char *fileLabel)
 	fread(&mh,sizeof(struct mainHeader),1,fp);
 	strcpy(vfsName,mh.fileLabel);
 	
-	printf("\n%s",mh.fileLabel);
-	printf("\n%d",mh.maxFileDescriptor);
-	printf("\n%d",mh.noUsedDescriptor);
+//	printf("\n%s",mh.fileLabel);
+//	printf("\n%d",mh.maxFileDescriptor);
+//	printf("\n%d",mh.noUsedDescriptor);
 	
 	root=(struct nAryTree *)malloc(sizeof(struct nAryTree));
 	//bstroot=(node *)malloc(sizeof(node));
@@ -67,47 +67,47 @@ struct nAryTree *mount_vfs(char *fileLabel)
 			{				
 				
 				//printf("\n%d",i);
-				printf("\n%s",temp->fileName);
-				printf("\n%s",temp->fullPathName);
-				printf("\n%c",temp->fileType);
-				printf("\n%d\n",temp->fileSize);
-				printf("\ncall for nary\n");
+//				printf("\n%s",temp->fileName);
+//				printf("\n%s",temp->fullPathName);
+//				printf("\n%c",temp->fileType);
+//				printf("\n%d\n",temp->fileSize);
+//				printf("\ncall for nary\n");
 				
 				root=createRoot(temp);
-				printf("\ncall for bst\n");
+//				printf("\ncall for bst\n");
 
 				bstroot=bstinsert(bstroot,temp);
-				printf("\ncall for hashtable\n");
+//				printf("\ncall for hashtable\n");
 				hashing(temp);
 
-				printf("\naft all call\n");				
+//				printf("\naft all call\n");				
 
-				printf("\n%s",root->fd_tree->fileName);
-				printf("\n%s",root->fd_tree->fullPathName);
-				printf("\n%c",root->fd_tree->fileType);
-				printf("\n%d",root->fd_tree->fileSize);
-				printf("\n");
+//				printf("\n%s",root->fd_tree->fileName);
+//				printf("\n%s",root->fd_tree->fullPathName);
+//				printf("\n%c",root->fd_tree->fileType);
+//				printf("\n%d",root->fd_tree->fileSize);
+//				printf("\n");
 				i=i+1;
 				continue;
 			}			
 
-				printf("\n%d",i);
-				printf("\n%s",temp->fileName);
-				printf("\n%s",root->fd_tree->fileName);
-				printf("\n%s",root->fd_tree->fullPathName);
-				printf("\n%c",root->fd_tree->fileType);
-				printf("\n%d",root->fd_tree->fileSize);
+//				printf("\n%d",i);
+//				printf("\n%s",temp->fileName);
+//				printf("\n%s",root->fd_tree->fileName);
+//				printf("\n%s",root->fd_tree->fullPathName);
+//				printf("\n%c",root->fd_tree->fileType);
+//				printf("\n%d",root->fd_tree->fileSize);
 				
-				printf("\n inserting the child into the n arry tree");
+//				printf("\n inserting the child into the n arry tree");
 				nTreeChild(temp);
-				printf("\n inserting the bst tree");
+//				printf("\n inserting the bst tree");
 				bstroot=bstinsert(bstroot,temp);
-				printf("inserting the hashtable nodes");
+//				printf("inserting the hashtable nodes");
 				hashing(temp);
 
-				printf("\n displaying the bst tree");
+//				printf("\n displaying the bst tree");
 				//display(bstroot);
-				printf("\nend in %s\n",root->leftChild->fd_tree->fileName);
+//				printf("\nend in %s\n",root->leftChild->fd_tree->fileName);
 			
 		i=i+1;
 		}		

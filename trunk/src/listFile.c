@@ -21,8 +21,8 @@ void list_file(char *P1 ,char *P2)
 	count=countSlash(tempP1);
 	token=stringtok(tempP1);	
 	
-	for(i=0;i<=count;i++)	
-		printf("\n tokens are %s\n",token[i]);
+	//for(i=0;i<=count;i++)	
+	//	printf("\n tokens are %s\n",token[i]);
 
 	n=strlen(P1)-(strlen(token[count])+1);
 	//l2=strlen(token[count-1])+1;
@@ -46,10 +46,10 @@ void list_file(char *P1 ,char *P2)
 		break;
 		currPtr=currPtr->rightSibling;
 	}
-	printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
+	//printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
 	
 	if(!(strstr(currPtr->fd_tree->fileName,".txt")))
-		printf("\nnot a text file\n");
+	//	printf("\nnot a text file\n");
 		
 	else
 	{

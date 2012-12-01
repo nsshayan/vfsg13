@@ -10,7 +10,7 @@ int i,blockno;
 
 fp=fopen("iitkgp34","rb");
 if(fp==NULL)
-printf("fp null pointer");
+//printf("fp null pointer");
 //printf("%lu",fp);
 
 	//fread(nodf, 4, 1, fp);
@@ -22,16 +22,16 @@ struct mainHeader mh;
 fread(&mh,sizeof(struct mainHeader),1,fp);
 fd=&(mh.fDescriptor[0]);
 
-printf("\nDisplaying the contents of the first file descriptor\n");
-printf("\nfile name=%s\n",fd->fileName);
-printf("\nfile path=%s\n",fd->fullPathName);
-printf("\nfile type=%c\n",fd->fileType);
+//printf("\nDisplaying the contents of the first file descriptor\n");
+//printf("\nfile name=%s\n",fd->fileName);
+//printf("\nfile path=%s\n",fd->fullPathName);
+//printf("\nfile type=%c\n",fd->fileType);
 
-	printf("\nPrinting the details of metaheader\n");
-	for (i=0; i<mh.noUsedDescriptor; i++) {
-		printf("\n%d\n",mh.freeList[i]);
-		printf("\n%s",mh.fDescriptor[i].fileName);				
-	}
+//	printf("\nPrinting the details of metaheader\n");
+//	for (i=0; i<mh.noUsedDescriptor; i++) {
+//		printf("\n%d\n",mh.freeList[i]);
+//		printf("\n%s",mh.fDescriptor[i].fileName);				
+//	}
 
 /*
 //printing the meta header part

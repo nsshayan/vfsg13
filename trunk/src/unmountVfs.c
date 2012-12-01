@@ -10,7 +10,7 @@ void clear_bst(node *);
 //void initialize();
 
 void unmount_vfs(char *P1) {
-	printf("\nroot name in unmount::%s\n",root->fd_tree->fileName);	
+//	printf("\nroot name in unmount::%s\n",root->fd_tree->fileName);	
 	
 	int j;
 	
@@ -23,16 +23,16 @@ void unmount_vfs(char *P1) {
 	traverse(tempVar);
 
 	
-	printf("\nfile names in unmount::\n");	
-	for(j=0; j<i; j++) {
-		printf("\n%s\n",fd[j].fileName);
-	}	
-	printf("\nused fd count::%d\n",i);
+//	printf("\nfile names in unmount::\n");	
+//	for(j=0; j<i; j++) {
+//		printf("\n%s\n",fd[j].fileName);
+//	}	
+//	printf("\nused fd count::%d\n",i);
 
 	mainfp=fopen(P1,"rb+");
 	
 	if(mainfp==NULL)
-		printf("file not found\n");				
+//		printf("file not found\n");				
 
 	else {
 		for(j=0; j<i; j++) {
@@ -53,7 +53,7 @@ void unmount_vfs(char *P1) {
 	free(bstroot);
 	free(hashnode);
 
-	printf("\nroot address%p\n",root);
+//	printf("\nroot address%p\n",root);
 
 }
 

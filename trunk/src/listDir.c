@@ -9,20 +9,20 @@ void listDir(char P1[], int P2, char P3[]) {
 	//temp=(struct nAryTree *) malloc(sizeof(struct nAryTree));
 	
 	fp=fopen(P3,"w");
-	printf("\n fp %p\n",fp);		
+	//printf("\n fp %p\n",fp);		
 	
 	if(root==NULL || root->leftChild==NULL) 
-		printf("\nNo list exists\n");
+	//	printf("\nNo list exists\n");
 	
 	else {
-		printf("\n root %p\n",root);	
+	//	printf("\n root %p\n",root);	
 
 		temp=curPtrFunc(P1,root);
 		temp=temp2;
-		printf("\n after returning temp %p\n",temp);						
+	//	printf("\n after returning temp %p\n",temp);						
 		//printf("\nreq path name%s\n",temp->fd_tree->fullPathName);			
 	
-		printf("==========Listing the directories=============");	
+	//	printf("==========Listing the directories=============");	
 
 		if( P2 == 0) {
 			listNonRec(temp);		
@@ -55,10 +55,10 @@ fclose(fp);
 void listNonRec(struct nAryTree *temp) {		
 	
 	if( temp != NULL ) {
-		printf("\n%s\n", temp->fd_tree->fileName);
+	//	printf("\n%s\n", temp->fd_tree->fileName);
 		while( temp->rightSibling != NULL ) {
 			temp=temp->rightSibling;			
-			printf("\n%s\n", temp->fd_tree->fileName);
+	//		printf("\n%s\n", temp->fd_tree->fileName);
 			strcpy(addName,temp->fd_tree->fileName);
 			addToFile(addName);
 		}
@@ -68,7 +68,7 @@ void listNonRec(struct nAryTree *temp) {
 void listRec(struct nAryTree *temp) {
 			
 	if(temp != NULL) {
-		printf("\n fileName=%s",temp->fd_tree->fileName);
+	//	printf("\n fileName=%s",temp->fd_tree->fileName);
 		strcpy(addName,temp->fd_tree->fileName);				
 		addToFile(addName);
 		listRec(temp->rightSibling);

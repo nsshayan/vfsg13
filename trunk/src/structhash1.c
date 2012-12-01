@@ -84,7 +84,7 @@ list * searchHash(char filename[]){
 
 	while(search != NULL){
 		if(!(strncmp(filename,search->file->fileName,strlen(filename)))){
-			printf("Filename=%s\nFilepath=%s\n",search->file->fileName,search->file->fullPathName);
+//			printf("Filename=%s\nFilepath=%s\n",search->file->fileName,search->file->fullPathName);
 			result[j]=search;
 			strcpy(path,search->file->fullPathName);
 			start=listinsert(start,path);
