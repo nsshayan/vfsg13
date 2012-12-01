@@ -5,8 +5,8 @@ struct nAryTree *curPtrFunc(char P1[],struct nAryTree *temp) {
 
 	if(temp != NULL) {
 		if (strcmp(temp->fd_tree->fullPathName,P1)==0) 	{	
-			printf("\n temp %p\n",temp);						
-			printf("\nreq path name%s\n",temp->fd_tree->fullPathName);	
+//			printf("\n temp %p\n",temp);						
+//			printf("\nreq path name%s\n",temp->fd_tree->fullPathName);	
 			temp2=temp;		
 			return temp2;		
 		}			

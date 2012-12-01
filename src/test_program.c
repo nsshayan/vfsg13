@@ -7,16 +7,16 @@ int  main()
 char *P1="/";
 char ch[100]="root/";
 
-printf("\nThe string %s before rewriting\n",P1);
+//printf("\nThe string %s before rewriting\n",P1);
 
-printf("length=%d",strlen(ch));
+//printf("length=%d",strlen(ch));
 if(strlen(ch)==1)
-printf("\n the path is root only");
+//printf("\n the path is root only");
 
 else if(strlen(P1)>1)
 strcat(ch,P1);
 //NP1=strcat(ch,P1);
-printf("\n the new path is:: %s\n",ch);
+//printf("\n the new path is:: %s\n",ch);
 
 return 0;
 }

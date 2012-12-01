@@ -15,7 +15,7 @@ void makeDirRec(char *P1,char *P2) {
 	token=stringtok(P1);
 	
 	for(j=0;j<=count;j++)
-		printf("\nafter tokenising we get %s\n",token[j]);
+//		printf("\nafter tokenising we get %s\n",token[j]);
 
 	strcpy(createdPath,token[0]);
 
@@ -25,7 +25,7 @@ void makeDirRec(char *P1,char *P2) {
 	
 		if(i==1) {
 			currPtr=currPtrReturn(createdPath,token[i]);
-			printf("\ncurrPtr of if::%p",currPtr);
+//			printf("\ncurrPtr of if::%p",currPtr);
 		}
 		else 
 		{
@@ -34,10 +34,10 @@ void makeDirRec(char *P1,char *P2) {
 			//{
 				strcat(createdPath,"/");
 				strcat(createdPath,token[i-1]);				
-				printf("\ncreatedPath of else::%s",createdPath);
-				printf("\ntokeni of else::%s",token[i]);
+//				printf("\ncreatedPath of else::%s",createdPath);
+//				printf("\ntokeni of else::%s",token[i]);
 				currPtr=currPtrReturn(createdPath,token[i]);
-				printf("\ncurrPtr of else::%p",currPtr);
+//				printf("\ncurrPtr of else::%p",currPtr);
 			//}
 
 		}
@@ -55,10 +55,10 @@ void makeDirRec(char *P1,char *P2) {
 	strcat(createdPath,token[count]);
 	}
 	
-	printf("\nThis is the actual path\n");
-	printf("\n%s\n",createdPath);
+//	printf("\nThis is the actual path\n");
+//	printf("\n%s\n",createdPath);
 	
 	makeDir(createdPath,P2);
 
-	printf("\nroot address in makedirp::%p\n",root);	
+//	printf("\nroot address in makedirp::%p\n",root);	
 }

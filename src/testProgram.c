@@ -6,7 +6,7 @@
 #include "../include/hashTable.h"
 
 int main() {
-	printf("\n This the main program");
+//	printf("\n This the main program");
 	return 0;
 }
 

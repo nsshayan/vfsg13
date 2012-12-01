@@ -20,8 +20,8 @@ parentP1=(char *)malloc(sizeof(char)*50);
 	count=countSlash(tempP1);
 	token=stringtok(tempP1);	
 	
-	for(i=0;i<=count;i++)	
-		printf("\n tokens are %s\n",token[i]);
+//	for(i=0;i<=count;i++)	
+//		printf("\n tokens are %s\n",token[i]);
 
 	n=strlen(P1)-(strlen(token[count])+1);
 	//l2=strlen(token[count-1])+1;
@@ -45,7 +45,7 @@ parentP1=(char *)malloc(sizeof(char)*50);
 		break;
 		currPtr=currPtr->rightSibling;
 	}
-	printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
+//	printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
 	
 	fp=fopen(P2,"r");
 	mainfp=fopen(vfsName,"rb+");
