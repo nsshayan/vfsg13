@@ -2,10 +2,10 @@
 #include "funcPrototype.h"
 #include "funcPrototype2.h"
 
-struct nAryTree * currPtrReturn(char P1[],char P2[])
+struct nAryTree * currPtrReturn(char P1[100],char P2[100])
 {
 		
-	struct nAryTree *currPtr,*temproot;
+	struct nAryTree *currPtr=NULL,*temproot;
 		
 	if(strcmp(P1,"root")==0)
 	{
@@ -24,7 +24,7 @@ struct nAryTree * currPtrReturn(char P1[],char P2[])
 
 	while(currPtr!=NULL) //moving to the correct position
 	{
-		if(strcmp(currPtr->fd_tree->fileName,P2)==0) 
+		if((strcmp(currPtr->fd_tree->fileName,P2))==0) 
 		break;
 		currPtr=currPtr->rightSibling;
 	}

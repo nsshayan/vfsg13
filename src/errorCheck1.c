@@ -38,7 +38,14 @@ int error_addfile(char *P1, char *P2, char *P3)
             goto exit;       
         }
 //#define ERR_VFS_ADDFILE_03 "FILE_ALREADY_EXISTS"
-    currPtr=curPtrFunc1(P1,root);    
+    currPtr=curPtrFunc1(P1,root); 
+    if(currPtr==NULL) {
+	flag=10;
+        fprintf(fp,"%s","addfile_FAILURE SOURCE_DIRECTORY_NOT_FOUND");
+        fprintf(fp,"%s","\n");
+        goto exit;
+
+    }		   
     if(currPtr!=NULL && currPtr->leftChild!=NULL && strcasecmp(currPtr->leftChild->fd_tree->fileName,P2)==0)
     {
         flag=3;
