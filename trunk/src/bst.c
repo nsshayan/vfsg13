@@ -118,7 +118,7 @@ node* insert(node* temp,struct fileDescriptor *fd){
 	if(temp != NULL){
 	searchBstPath(filepath,temp->leftchild);
 	if(!(strcmp(filepath,temp->file->fullPathName))){
-		printf("\nsearch bst using pathname %s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
+		//printf("\nsearch bst using pathname %s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
 		return 0;
 	}
 	searchBstPath(filepath,temp->rightchild);
@@ -129,10 +129,10 @@ void display(node *temp){
 	
 	if(temp != NULL){		
 		//printf("\n%s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
-		printf("\nfile Name=%s",temp->file->fileName);
-		printf("\nleft child of %s",temp->file->fileName);
+//		printf("\nfile Name=%s",temp->file->fileName);
+//		printf("\nleft child of %s",temp->file->fileName);
 		display(temp->leftchild);	
-		printf("\n right child of %s",temp->file->fileName);			
+//		printf("\n right child of %s",temp->file->fileName);			
 		display(temp->rightchild);
 	}
 } 

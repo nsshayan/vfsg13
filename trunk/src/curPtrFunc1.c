@@ -18,12 +18,14 @@ struct nAryTree *curPtrFunc1(char P1[],struct nAryTree *temp) {
 	if (count>0) {
 		n=strlen(orgP1)-(strlen(token[count])+1);
 		strcpy(tempP2,token[count]);
-		strncpy(tempP1,orgP1,n);	
+		strcat(tempP2,"\0");
+		strcpy(tempP1,orgP1);	
+		tempP1[n]='\0';
 		curPtr=currPtrReturn(tempP1,tempP2);
-		printf("in if");	
+		//printf("in if");	
 	}
 	else {
-		printf("in else");	
+		//printf("in else");	
 		curPtr=root;	
 	}
 

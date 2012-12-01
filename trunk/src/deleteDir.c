@@ -21,27 +21,26 @@ void deleteDir(char P1[])
 	count=countSlash(tempP1);
 	token=stringtok(tempP1);
 
-	printf("\nStarting of the delete directory\n");
-	printf("\nroot file name=%s\n",root->fd_tree->fileName);
-	printf("\nroot file path=%s\n",root->fd_tree->fullPathName );
+	//printf("\nStarting of the delete directory\n");
+	//printf("\nroot file name=%s\n",root->fd_tree->fileName);
+	//printf("\nroot file path=%s\n",root->fd_tree->fullPathName );
 	
-	for(i=0;i<=count;i++)	
-		printf("\n tokens are %s\n",token[i]);
+	//for(i=0;i<=count;i++)	
+	//	printf("\n tokens are %s\n",token[i]);
 
 	n=strlen(P1)-(strlen(token[count])+1);
 	//l2=strlen(token[count-1])+1;
-	printf("\npath %s\n",P1);
+	//printf("\npath %s\n",P1);
 	//printf("lengths %d %d %d",strlen(P1),strlen(token[count])+1,n);
 	
 	//copying the parent path
-		for(i=0;i<n;i++)
-			parentP1[i]=P1[i];
-	//strncpy(parentP1,P1,n);
-	//strcat(parentP1,'\0');
+		/*for(i=0;i<n;i++)
+			parentP1[i]=P1[i];*/
+	strcpy(parentP1,P1);
 	parentP1[n]='\0';
-	printf("\ntoken[0] %s\n",token[0]);
-	printf("\nparent p1 %s\n",parentP1);
-	printf("\nP1 %s\n",P1);
+	//printf("\ntoken[0] %s\n",token[0]);
+	//printf("\nparent p1 %s\n",parentP1);
+	//printf("\nP1 %s\n",P1);
 	strcpy(currFileName,token[count]);
 		
 	strcpy(prevFileName,token[count-1]);
@@ -57,7 +56,7 @@ void deleteDir(char P1[])
 		currPtr=currPtr->rightSibling;
 	}
 
-	printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
+	//printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
 	
 	
 	if (strcmp(parentP1,"root")!=0) 
@@ -66,25 +65,25 @@ void deleteDir(char P1[])
 		n=strlen(parentP1)-(strlen(token[count-1])+1);
 		else 
 		n=strlen(parentP1);
-		printf("\npath %s\n",parentP1);
+		//printf("\npath %s\n",parentP1);
 	
-		printf("token-1  %s",token[count-1]);
+		//printf("token-1  %s",token[count-1]);
 		//printf("length of token-1  %d",strlen(token[count-1]));
 		//printf("lengths %d %d %d",strlen(parentP1),strlen(token[count-1])+1,n);
-		printf("\n n=%d\n",n);
+		//printf("\n n=%d\n",n);
 		//printf("\nl2=%d\n",l2);
 		/*for(i=0;i<(n);i++)
 		parentP2[i]=parentP1[i];*/
 		strcpy(parentP2,parentP1);
 		//strcat(parentP2,"\0");
 		parentP2[n]='\0';
-		printf("\n parent 2%s\n",parentP2);
+		//printf("\n parent 2%s\n",parentP2);
 		
 			if(strcmp(parentP2,"root")!=0)
 			{	
 				prevPtr=curPtrFunc(parentP2,temproot);
 				prevPtr=temp2;
-				printf("\n tokens %s\n", prevPtr->fd_tree->fileName);
+				//printf("\n tokens %s\n", prevPtr->fd_tree->fileName);
 	
 				while(prevPtr->rightSibling!=NULL)
 				{
@@ -124,10 +123,10 @@ void deleteDir(char P1[])
 	}
 	else 
 	{
-	printf("\n in else statement ");
-	printf("\n root add: %p\n",root);
-	printf("\nroot name =%s\n",root->fd_tree->fileName);
-	printf("\nroot path=%s\n",root->fd_tree->fullPathName);
+	//printf("\n in else statement ");
+	//printf("\n root add: %p\n",root);
+	//printf("\nroot name =%s\n",root->fd_tree->fileName);
+	//printf("\nroot path=%s\n",root->fd_tree->fullPathName);
 	prevPtr=root;
 		if(prevPtr->leftChild!=currPtr)
 		{
@@ -137,10 +136,10 @@ void deleteDir(char P1[])
 		}
 	
 	}
-	printf("\n previous ptr %s\n", prevPtr->fd_tree->fileName);
+	//printf("\n previous ptr %s\n", prevPtr->fd_tree->fileName);
 
 	if(currPtr->leftChild!=NULL)
-		printf("cannot be deleted");// error code to be used
+		//printf("cannot be deleted");// error code to be used
 	
 	else
 	{

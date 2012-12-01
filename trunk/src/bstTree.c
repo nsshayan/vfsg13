@@ -76,7 +76,7 @@ int searchbst(char filename[],char filepath[],node *temp,char outfile[]){
         }
     }
     else if(!(strcmp(catpath,temp->path))){
-    printf("%s\n%s\n%c\n%d\n",temp->file->fileName,temp->file->fullPathName,temp->file->fileType,temp->file->fileSize);
+    //printf("%s\n%s\n%c\n%d\n",temp->file->fileName,temp->file->fullPathName,temp->file->fileType,temp->file->fileSize);
     fprintf(fp,"%s",temp->file->fileName);
     fprintf(fp,"%c",'\n');	
     return 0;
@@ -89,7 +89,7 @@ int searchbst(char filename[],char filepath[],node *temp,char outfile[]){
     }
 
     else{
-        printf("Filepath doesnot exist\n");
+        //printf("Filepath doesnot exist\n");
         return 0;
     }
 fclose(fp);
@@ -186,17 +186,17 @@ void deletebst(char filename[],node *temp,char filepath[]){
             }
         }
     }
-    printf("\nFile is deleted\n");
+    //printf("\nFile is deleted\n");
 }
 
 void display(node *temp){ 
  
     if(temp != NULL){     
         //printf("\n%s\n%s\n%d\n",temp->file->fullPathName,temp->file->fileName,temp->file->fileSize);
-        printf("\nfile Name=%s",temp->file->fileName);
-        printf("\nleft child of %s",temp->file->fileName);
+       // printf("\nfile Name=%s",temp->file->fileName);
+       // printf("\nleft child of %s",temp->file->fileName);
         display(temp->leftchild); 
-        printf("\n right child of %s",temp->file->fileName);         
+        //printf("\n right child of %s",temp->file->fileName);         
         display(temp->rightchild);
     }
 } 
