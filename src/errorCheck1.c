@@ -18,6 +18,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         flag=7;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_07);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_ADDFILE_07);
         goto exit;
     }
 //#define ERR_VFS_ADDFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -26,6 +27,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_ADDFILE_00);
         goto exit;
     }
 //#define ERR_VFS_ADDFILE_02 "INVALID_CHARACTER_IN_FILENAME"
@@ -35,6 +37,7 @@ int error_addfile(char *P1, char *P2, char *P3)
             flag=2;
             fprintf(fp,"%s",ERR_VFS_ADDFILE_02);
             fprintf(fp,"%s","\n");
+		printf(ERR_VFS_ADDFILE_02);
             goto exit;       
         }
 //#define ERR_VFS_ADDFILE_03 "FILE_ALREADY_EXISTS"
@@ -51,6 +54,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         flag=3;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_03);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_ADDFILE_03);
         goto exit;
     }
 
@@ -63,6 +67,7 @@ int error_addfile(char *P1, char *P2, char *P3)
             flag=3;
             fprintf(fp,"%s",ERR_VFS_ADDFILE_03);
             fprintf(fp,"%s","\n");
+		printf(ERR_VFS_ADDFILE_03);
             goto exit;
         }
     currPtr=currPtr->rightSibling;
@@ -73,6 +78,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_ADDFILE_04);
         goto exit;
     }
 //#define ERR_VFS_ADDFILE_05 "CANNOT_WRITE_TO_DATAFILE"
@@ -83,7 +89,8 @@ int error_addfile(char *P1, char *P2, char *P3)
     if(mainfp==NULL) {
 	flag=8;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_08);
-        fprintf(fp,"%s","\n");        
+        fprintf(fp,"%s","\n");   
+	printf(ERR_VFS_ADDFILE_08);     
         goto exit;
     }
     fclose(mainfp);
@@ -97,6 +104,7 @@ int error_addfile(char *P1, char *P2, char *P3)
         flag=6;
         fprintf(fp,"%s",ERR_VFS_ADDFILE_06);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_ADDFILE_06);
         fclose(mainfp);
         goto exit;
     }
@@ -119,6 +127,7 @@ int error_listfile(char *P1, char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_LISTFILE_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTFILE_04);
         goto exit;
     }
 //#define ERR_VFS_LISTFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -127,6 +136,7 @@ int error_listfile(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTFILE_00);
         goto exit;
     }
 //#define ERR_VFS_LISTFILE_01 "SOURCE_FILE_PATH_NOT_FOUND"
@@ -136,6 +146,7 @@ int error_listfile(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTFILE_01);
         goto exit;
     }
 //#define ERR_VFS_LISTFILE_02 "NOT_A_TEXT_FILE"
@@ -144,6 +155,7 @@ int error_listfile(char *P1, char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_LISTFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTFILE_02);
         goto exit;
     }
 //#define ERR_VFS_LISTFILE_03 "CANNOT_CREATE_OUTPUTFILE"
@@ -152,6 +164,7 @@ int error_listfile(char *P1, char *P2)
     {
         flag=3;
         fprintf(fp,"%s",ERR_VFS_LISTFILE_03);
+	printf(ERR_VFS_LISTFILE_03);
         fprintf(fp,"%s","\n");
         goto exit;
     }
@@ -174,6 +187,7 @@ int error_updatefile(char *P1, char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_UPDATEFILE_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_UPDATEFILE_04);
         goto exit;
     }
 //#define ERR_VFS_UPDATEFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -182,6 +196,7 @@ int error_updatefile(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_UPDATEFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_UPDATEFILE_00);
         goto exit;
     }
 //#define ERR_VFS_UPDATEFILE_01 "INTERNAL_FILE_NOT_FOUND"
@@ -191,6 +206,7 @@ int error_updatefile(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_UPDATEFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_UPDATEFILE_01);
         goto exit;
     }
 //#define ERR_VFS_UPDATEFILE_02 "EXTERNAL_FILE_NOT_FOUND"
@@ -200,6 +216,7 @@ int error_updatefile(char *P1, char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_UPDATEFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_UPDATEFILE_02);
         goto exit;
     }
     if(mainfp!=NULL)
@@ -222,6 +239,7 @@ int error_removefile(char *P1)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_REMOVEFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_REMOVEFILE_02);
         goto exit;
     }
 //#define ERR_VFS_REMOVEFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -231,6 +249,7 @@ int error_removefile(char *P1)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_REMOVEFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_REMOVEFILE_00);
         goto exit;
     }
     currPtr=curPtrFunc1(P1,root);   
@@ -240,6 +259,7 @@ int error_removefile(char *P1)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_REMOVEFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_REMOVEFILE_01);
         goto exit;
     }   
 
@@ -248,6 +268,7 @@ int error_removefile(char *P1)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_REMOVEFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_REMOVEFILE_00);
         goto exit;
     }
 
@@ -268,6 +289,7 @@ int error_movefile(char *P1,char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_MOVEFILE_06);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEFILE_06);
         goto exit;
     }
 //#define ERR_VFS_MOVEFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -276,6 +298,7 @@ int error_movefile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOVEFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEFILE_00);
         goto exit;
     }
 //#define ERR_VFS_MOVEFILE_01 "CANNOT_FIND_SOURCEFILE"
@@ -285,6 +308,7 @@ int error_movefile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOVEFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEFILE_01);
         goto exit;   
     }
 //#define ERR_VFS_MOVEFILE_02 "CANNOT_FIND_DESTINATION_PATH"
@@ -294,6 +318,7 @@ int error_movefile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOVEFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEFILE_02);
         goto exit;   
     }
 
@@ -314,6 +339,7 @@ int error_copyfile(char *P1,char *P2)
         flag=5;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_05);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_05);
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -322,6 +348,7 @@ int error_copyfile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_00);
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_01 "CANNOT_FIND_SOURCEFILE"
@@ -331,6 +358,7 @@ int error_copyfile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_01);
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_02 "CANNOT_FIND_DESTINATIONPATH"
@@ -340,6 +368,7 @@ int error_copyfile(char *P1,char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_02);
         goto exit;
     }
 //#define ERR_VFS_COPYFILE_03 "CANNOT_COPY_DIR_TO_FILE"
@@ -349,6 +378,7 @@ int error_copyfile(char *P1,char *P2)
         flag=3;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_03);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_03);
         goto exit;   
     }
 //#define ERR_VFS_COPYFILE_04 "FILE_SYSTEM_FULL"
@@ -357,6 +387,7 @@ int error_copyfile(char *P1,char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_COPYFILE_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_COPYFILE_04);
         goto exit;
     }
 
@@ -377,6 +408,7 @@ int error_exportfile(char *P1,char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_EXPORTFILE_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_EXPORTFILE_04);
         goto exit;
     }
 //#define ERR_VFS_EXPORTFILE_00 "VFS_INSUFFICIENT_ARGUMENTS"
@@ -385,6 +417,7 @@ int error_exportfile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_EXPORTFILE_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_EXPORTFILE_00);
         goto exit;
     }
 //#define ERR_VFS_EXPORTFILE_01 "CANNOT_FIND_SOURCEFILE"
@@ -394,6 +427,7 @@ int error_exportfile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_EXPORTFILE_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_EXPORTFILE_01);
         goto exit;
     }
 //#define ERR_VFS_EXPORTFILE_02 "CANNOT_CREATE_OUTPUTFILE"
@@ -403,6 +437,7 @@ int error_exportfile(char *P1,char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_EXPORTFILE_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_EXPORTFILE_02);
         goto exit;
     }
     if(mainfp!=NULL)
@@ -413,6 +448,7 @@ int error_exportfile(char *P1,char *P2)
         flag=3;
         fprintf(fp,"%s",ERR_VFS_EXPORTFILE_03);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_EXPORTFILE_03);
         goto exit;
     }
 
@@ -432,6 +468,7 @@ int error_searchfile(char *P1,char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_SEARCHFILE_00);
         fprintf(fp,"%c",'\n');
+	printf(ERR_VFS_SEARCHFILE_00);
         goto exit;
     }	
 
@@ -442,6 +479,7 @@ int error_searchfile(char *P1,char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_SEARCHFILE_02);
         fprintf(fp,"%c",'\n');
+	printf(ERR_VFS_SEARCHFILE_02);
         goto exit;
     }
 exit:fclose(fp);

@@ -15,6 +15,7 @@ fp=fopen("../test/SUCCESS.txt","a");
     flag=1;
     fprintf(fp,"%s",ERR_VFS_CREATE_00);
     fprintf(fp,"%s","\n");
+ 	printf(ERR_VFS_CREATE_00);
     goto exit;
     }
    
@@ -24,6 +25,7 @@ fp=fopen("../test/SUCCESS.txt","a");
         fprintf(fp,"%s",ERR_VFS_CREATE_01);
         fprintf(fp,"%s","\n");
         flag=1;   
+	printf(ERR_VFS_CREATE_01);
         fclose(mainfp);
         goto exit;
     }
@@ -35,6 +37,7 @@ fp=fopen("../test/SUCCESS.txt","a");
             fprintf(fp,"%s",ERR_VFS_CREATE_03);
             fprintf(fp,"%s","\n");
             flag=3;
+		printf(ERR_VFS_CREATE_03);
             goto exit;
         }
     }   
@@ -44,6 +47,7 @@ fp=fopen("../test/SUCCESS.txt","a");
         fprintf(fp,"%s",ERR_VFS_CREATE_04);
         fprintf(fp,"%s","\n");
         flag=5;
+	printf(ERR_VFS_CREATE_04);
         goto exit;
     }
 
@@ -51,6 +55,7 @@ fp=fopen("../test/SUCCESS.txt","a");
     {
         fprintf(fp,"%s",ERR_VFS_CREATE_05);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_CREATE_05);
         goto exit;
     }
 
@@ -60,6 +65,7 @@ fp=fopen("../test/SUCCESS.txt","a");
         fprintf(fp,"%s",ERR_VFS_CREATE_02);
         fprintf(fp,"%s","\n");
         flag=2;
+	printf(ERR_VFS_CREATE_02);
         goto exit;
     }
     if(mainfp!=NULL)
@@ -82,6 +88,7 @@ int error_mountvfs(char *P1) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOUNT_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOUNT_00);
 	fclose(fp);
         goto exit;
     }
@@ -91,6 +98,7 @@ int error_mountvfs(char *P1) {
         fprintf(fp,"%s",ERR_VFS_MOUNT_01);
         fprintf(fp,"%s","\n");
         flag=1;
+	printf(ERR_VFS_MOUNT_01);
         fclose(fp);
         goto exit;
     }
@@ -106,6 +114,7 @@ int error_mountvfs(char *P1) {
         fprintf(fp,"%s",ERR_VFS_MOUNT_03);
         fprintf(fp,"%s","\n");
         flag=3;
+	printf(ERR_VFS_MOUNT_03);
         fclose(fp);
         goto exit;
     }
@@ -132,6 +141,7 @@ int error_unmountvfs(char *P1) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_UNMOUNT_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_UNMOUNT_00);
         goto exit;
     }
 
@@ -140,6 +150,7 @@ int error_unmountvfs(char *P1) {
         fprintf(fp,"%s",ERR_VFS_UNMOUNT_01);
         fprintf(fp,"%s","\n");
         flag=1;
+	printf(ERR_VFS_UNMOUNT_01);
         goto exit;
     }
     if(mainfp!=NULL)
@@ -152,6 +163,7 @@ int error_unmountvfs(char *P1) {
         fprintf(fp,"%s",ERR_VFS_UNMOUNT_03);
         fprintf(fp,"%s","\n");
         flag=3;
+	printf(ERR_VFS_UNMOUNT_03);
         goto exit;
     }
 exit:fclose(fp);
@@ -174,6 +186,7 @@ int error_makedir(char *P1,char *P2) {
 	flag=1;
 	fprintf(fp,"%s",ERR_VFS_MAKEDIR_05);
 	fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MAKEDIR_05);
 	goto exit;
     }
 
@@ -183,6 +196,7 @@ int error_makedir(char *P1,char *P2) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MAKEDIR_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MAKEDIR_00);
         goto exit;
     }
 	
@@ -195,6 +209,7 @@ int error_makedir(char *P1,char *P2) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MAKEDIR_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MAKEDIR_00);
         goto exit;
     }
 //#define ERR_VFS_MAKEDIR_02 "INVALID_CHARACTER_IN_DIRNAME"
@@ -212,6 +227,7 @@ int error_makedir(char *P1,char *P2) {
 			flag=2;
 			fprintf(fp,"%s",ERR_VFS_MAKEDIR_02);
 			fprintf(fp,"%s","\n");
+			printf(ERR_VFS_MAKEDIR_02);
 			goto exit;
 		}
 //#define ERR_VFS_MAKEDIR_03 "DIRECTORY_ALREADY_EXISTS"
@@ -222,6 +238,7 @@ int error_makedir(char *P1,char *P2) {
 	flag=3;
         fprintf(fp,"%s",ERR_VFS_MAKEDIR_03);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MAKEDIR_03);
         goto exit;
 	}
 
@@ -242,6 +259,7 @@ int error_deletedir(char *P1) {
         flag=4;
         fprintf(fp,"%s",ERR_VFS_DELETEDIR_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_DELETEDIR_04);
         goto exit;
     }
 
@@ -252,6 +270,7 @@ int error_deletedir(char *P1) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_DELETEDIR_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_DELETEDIR_00);
         goto exit;
     }
    
@@ -263,6 +282,7 @@ int error_deletedir(char *P1) {
         flag=1;
         fprintf(fp,"%s",ERR_VFS_DELETEDIR_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_DELETEDIR_01);
         goto exit;
     }
 //#define ERR_VFS_DELETEDIR_02 "DIRECTORY_IS_NOT_EMPTY"
@@ -272,6 +292,7 @@ int error_deletedir(char *P1) {
         flag=2;
         fprintf(fp,"%s",ERR_VFS_DELETEDIR_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_DELETEDIR_02);
         goto exit;
     }
 
@@ -293,6 +314,7 @@ int error_movedir(char *P1, char *P2)
         flag=8;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_08);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_08);
         goto exit;
     }
 
@@ -302,6 +324,7 @@ int error_movedir(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_00);
         goto exit;
     }
 
@@ -314,6 +337,7 @@ int error_movedir(char *P1, char *P2)
         flag=1;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_01);
         goto exit;
     }
 //#define ERR_VFS_MOVEDIR_02 "CANNOT_FIND_SPECIFIED_DESTINATIONDIR"
@@ -323,6 +347,7 @@ int error_movedir(char *P1, char *P2)
         flag=2;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_02);
         goto exit;
     }
 //#define ERR_VFS_MOVEDIR_04 "SOURCE_CANNOT_BE_FILE"   
@@ -331,6 +356,7 @@ int error_movedir(char *P1, char *P2)
         flag=4;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_04);
         goto exit;
     }
    
@@ -345,6 +371,7 @@ int error_movedir(char *P1, char *P2)
             flag=5;
             fprintf(fp,"%s",ERR_VFS_MOVEDIR_05);
             fprintf(fp,"%s","\n");
+		printf(ERR_VFS_MOVEDIR_05);
             goto exit;
         }
     destPtr=destPtr->rightSibling;
@@ -378,6 +405,7 @@ int error_movedir(char *P1, char *P2)
         flag=6;
         fprintf(fp,"%s",ERR_VFS_MOVEDIR_06);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_MOVEDIR_06);
         goto exit;
     }
 
@@ -400,6 +428,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         flag=3;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_03);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTDIR_03);
         goto exit;
 
     }
@@ -409,6 +438,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_00);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTDIR_00);
         goto exit;
     }
 //#define ERR_VFS_LISTDIR_01 "CANNOT_FIND_SPECIFIED_PATH_OR_DIR"
@@ -418,6 +448,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_01);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTDIR_01);
         goto exit;   
     }
 //#define ERR_VFS_LISTDIR_02 "INVALID_FLAG"
@@ -426,6 +457,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_02);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTDIR_02);
         goto exit;   
     }
 //#define ERR_VFS_LISTDIR_04 "CANNOT_CREATE_OUTPUTFILE"
@@ -435,6 +467,7 @@ int error_listdir(char *P1, int P2, char *P3 )
         flag=1;
         fprintf(fp,"%s",ERR_VFS_LISTDIR_04);
         fprintf(fp,"%s","\n");
+	printf(ERR_VFS_LISTDIR_04);
         goto exit;   
     }
     fclose(mainfp);
