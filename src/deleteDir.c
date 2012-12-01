@@ -8,7 +8,7 @@ void deleteDir(char P1[])
 	char prevFileName[50],currFileName[50];
 	int count;
 	char *parentP1,*parentP2;
-	int n,i;
+	int n;
 	struct nAryTree *currPtr;
 	struct nAryTree *prevPtr;
 	struct nAryTree *temproot;
@@ -138,10 +138,11 @@ void deleteDir(char P1[])
 	}
 	//printf("\n previous ptr %s\n", prevPtr->fd_tree->fileName);
 
-	if(currPtr->leftChild!=NULL)
+	//if(currPtr->leftChild!=NULL)
 		//printf("cannot be deleted");// error code to be used
 	
-	else
+	//else
+	if(currPtr->leftChild==NULL)
 	{
 
 		deletebst(currFileName,bstroot,P1);

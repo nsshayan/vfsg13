@@ -32,6 +32,7 @@ void unmount_vfs(char *P1) {
 	mainfp=fopen(P1,"rb+");
 	
 	if(mainfp==NULL)
+	j=0;
 //		printf("file not found\n");				
 
 	else {

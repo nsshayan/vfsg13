@@ -176,10 +176,11 @@ void moveDir(char P1[],char P2[])
 
 	deletebst(currPtr->fd_tree->fileName,bstroot,currPtr->fd_tree->fullPathName);
 
-	if(currPtr==NULL)
+	//if(currPtr==NULL)
 //		printf("No such directory");// error code to be used
 	
-	else
+	//else
+	if(currPtr!=NULL)
 	{
 		if(prevPtr->leftChild==currPtr)
 			prevPtr->leftChild=currPtr->rightSibling;

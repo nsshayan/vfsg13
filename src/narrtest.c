@@ -25,7 +25,7 @@ void nTreeChild(struct fileDescriptor *fd){
 //	printf("\n I am in nTreeChild creation\n");
 	if(fd==NULL)
 //	printf("fd is null");
-	else
+//	else
 //	printf("fd is not null"); 
 	//printf("\nFile Path Name=%s\n",fd->fullPathName);
       	

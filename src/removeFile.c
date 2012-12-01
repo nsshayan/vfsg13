@@ -9,7 +9,7 @@ void remove_file(char *P1) {
 	char prevFileName[50],currFileName[50];
 	int count,blockno;
 	char *parentP1,*parentP2,ch;
-	int n,i,l2;
+	int n,i,l2=1;
 	struct nAryTree *currPtr;
 	struct nAryTree *prevPtr;
 	struct nAryTree *temproot;
@@ -139,6 +139,7 @@ void remove_file(char *P1) {
 //	printf("\n previous ptr %s\n", prevPtr->fd_tree->fileName);
 
 	if(currPtr->leftChild!=NULL)
+		l2=0;
 //		printf("cannot be deleted");// error code to be used
 	
 	else
