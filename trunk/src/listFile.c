@@ -49,6 +49,7 @@ void list_file(char *P1 ,char *P2)
 	//printf("\n currptr name %s\n",currPtr->fd_tree->fileName);
 	
 	if(!(strstr(currPtr->fd_tree->fileName,".txt")))
+		ch='n';
 	//	printf("\nnot a text file\n");
 		
 	else

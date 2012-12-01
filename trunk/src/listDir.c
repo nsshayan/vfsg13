@@ -7,11 +7,12 @@ void listDir(char P1[], int P2, char P3[]) {
 	
 	struct nAryTree *temp; 	
 	//temp=(struct nAryTree *) malloc(sizeof(struct nAryTree));
-	
+	int flag;
 	fp=fopen(P3,"w");
 	//printf("\n fp %p\n",fp);		
 	
 	if(root==NULL || root->leftChild==NULL) 
+		flag=0;
 	//	printf("\nNo list exists\n");
 	
 	else {

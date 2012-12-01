@@ -4,7 +4,7 @@
 
 void add_file ( char *P1, char *P2, char *P3) {
 	
-	struct mainHeader mh;
+	//struct mainHeader mh;
 	FILE *fp,*mainfp;
 	int count=0;
 	int blkloc;// to identify which block is free

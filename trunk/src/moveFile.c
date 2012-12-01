@@ -9,7 +9,7 @@ void move_file(char *P1,char *P2)
 	char prevFileName[50],currFileName[50];
 	int count;
 	char *parentP1,*parentP2,*destParent;
-	int n,i,l2;
+	int n,i,l2=1;
 	struct nAryTree *currPtr,*temproot;
 	struct nAryTree *prevPtr,*destPtr;
 	char tempP1[100];
